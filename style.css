@@ -59,7 +59,7 @@ body {
 
 
 /* =========================================
-   EMBLEMA DE FONDO
+   EMBLEMA DE FONDO // MARCA DE AGUA
 ========================================= */
 
 .intro-emblem {
@@ -80,46 +80,54 @@ body {
 
 
 .intro-emblem img {
-    width: min(75vw, 900px);
+    /*
+       1000 PX EN PC
+    */
+    width: 1000px;
 
-    max-width: 900px;
+    max-width: 1000px;
 
     height: auto;
 
-    opacity: 0.20;
+    /*
+       CONSERVA LOS COLORES
+       ORIGINALES DEL EMBLEMA
+    */
+    filter: none;
 
-    filter:
-        grayscale(1)
-        brightness(1.25)
-        contrast(1.15);
+    /*
+       EFECTO MARCA DE AGUA
+    */
+    opacity: 0.16;
 
     user-select: none;
 
+    /*
+       MOVIMIENTO MUY SUTIL
+    */
     animation:
-        emblemPulse 6s ease-in-out infinite;
+        watermarkPulse 6s ease-in-out infinite;
 }
 
 
-@keyframes emblemPulse {
+@keyframes watermarkPulse {
 
     0%,
     100% {
 
-        opacity: 0.16;
+        opacity: 0.13;
 
         transform:
             scale(1);
-
     }
 
 
     50% {
 
-        opacity: 0.24;
+        opacity: 0.18;
 
         transform:
-            scale(1.025);
-
+            scale(1.015);
     }
 
 }
@@ -131,7 +139,6 @@ body {
 ========================================= */
 
 .intro-grid {
-
     position: absolute;
 
     inset: 0;
@@ -155,7 +162,6 @@ body {
 
     background-size:
         50px 50px;
-
 }
 
 
@@ -165,7 +171,6 @@ body {
 ========================================= */
 
 #scanlines {
-
     position: absolute;
 
     inset: 0;
@@ -182,7 +187,6 @@ body {
             transparent 3px,
             rgba(255,255,255,0.025) 4px
         );
-
 }
 
 
@@ -192,7 +196,6 @@ body {
 ========================================= */
 
 #noise {
-
     position: absolute;
 
     inset: 0;
@@ -206,7 +209,6 @@ body {
     background-image:
 
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-
 }
 
 
@@ -216,7 +218,6 @@ body {
 ========================================= */
 
 .intro-content {
-
     position: relative;
 
     z-index: 10;
@@ -224,7 +225,6 @@ body {
     width: min(90%, 650px);
 
     text-align: center;
-
 }
 
 
@@ -234,7 +234,6 @@ body {
 ========================================= */
 
 .system-label {
-
     font-size: 13px;
 
     letter-spacing: 4px;
@@ -242,14 +241,11 @@ body {
     color: #9fa7a6;
 
     margin-bottom: 14px;
-
 }
 
 
 #bootPercent {
-
     color: #ffffff;
-
 }
 
 
@@ -259,7 +255,6 @@ body {
 ========================================= */
 
 .secure-label {
-
     font-size: 11px;
 
     letter-spacing: 5px;
@@ -267,7 +262,6 @@ body {
     color: #707776;
 
     margin-bottom: 55px;
-
 }
 
 
@@ -277,14 +271,11 @@ body {
 ========================================= */
 
 .intro-logo {
-
     margin-bottom: 45px;
-
 }
 
 
 .intro-p {
-
     font-size: 80px;
 
     font-weight: 800;
@@ -297,12 +288,10 @@ body {
 
     text-shadow:
         0 0 20px rgba(255,255,255,0.12);
-
 }
 
 
 .intro-name {
-
     margin-top: 15px;
 
     font-size: 32px;
@@ -310,12 +299,10 @@ body {
     font-weight: 700;
 
     letter-spacing: 10px;
-
 }
 
 
 .intro-division {
-
     margin-top: 8px;
 
     font-size: 11px;
@@ -323,7 +310,6 @@ body {
     letter-spacing: 6px;
 
     color: #7f8786;
-
 }
 
 
@@ -333,7 +319,6 @@ body {
 ========================================= */
 
 .connection-status {
-
     display: flex;
 
     align-items: center;
@@ -349,12 +334,10 @@ body {
     letter-spacing: 3px;
 
     color: #8d9694;
-
 }
 
 
 .status-dot {
-
     width: 7px;
 
     height: 7px;
@@ -368,7 +351,6 @@ body {
 
     animation:
         statusPulse 1.2s infinite;
-
 }
 
 
@@ -376,15 +358,11 @@ body {
 
     0%,
     100% {
-
         opacity: 0.35;
-
     }
 
     50% {
-
         opacity: 1;
-
     }
 
 }
@@ -396,7 +374,6 @@ body {
 ========================================= */
 
 .progress-container {
-
     width: 100%;
 
     height: 2px;
@@ -407,12 +384,10 @@ body {
     overflow: hidden;
 
     margin-bottom: 35px;
-
 }
 
 
 .progress-bar {
-
     width: 0%;
 
     height: 100%;
@@ -421,7 +396,6 @@ body {
 
     box-shadow:
         0 0 12px rgba(255,255,255,0.35);
-
 }
 
 
@@ -431,16 +405,17 @@ body {
 ========================================= */
 
 #skip {
-
     padding: 13px 35px;
 
     background: transparent;
 
-    border: 1px solid rgba(255,255,255,0.25);
+    border:
+        1px solid rgba(255,255,255,0.25);
 
     color: #e8eceb;
 
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron", sans-serif;
 
     font-size: 10px;
 
@@ -452,18 +427,15 @@ body {
         background 0.3s ease,
         border 0.3s ease,
         color 0.3s ease;
-
 }
 
 
 #skip:hover {
-
     background: #e8eceb;
 
     color: #080a0b;
 
     border-color: #e8eceb;
-
 }
 
 
@@ -473,11 +445,9 @@ body {
 ========================================= */
 
 #site {
-
     min-height: 100vh;
 
     background: #080a0b;
-
 }
 
 
@@ -487,7 +457,6 @@ body {
 ========================================= */
 
 .main-header {
-
     position: fixed;
 
     top: 0;
@@ -516,7 +485,6 @@ body {
         blur(12px);
 
     z-index: 1000;
-
 }
 
 
@@ -526,18 +494,15 @@ body {
 ========================================= */
 
 .brand {
-
     display: flex;
 
     align-items: center;
 
     gap: 14px;
-
 }
 
 
 .header-emblem {
-
     width: 45px;
 
     height: 45px;
@@ -546,35 +511,31 @@ body {
 
     opacity: 0.85;
 
-    filter:
-        grayscale(1)
-        brightness(1.2);
-
+    /*
+       TAMBIÉN CONSERVA LOS
+       COLORES DEL EMBLEMA
+    */
+    filter: none;
 }
 
 
 .brand-text {
-
     display: flex;
 
     flex-direction: column;
-
 }
 
 
 .brand-name {
-
     font-size: 18px;
 
     font-weight: 700;
 
     letter-spacing: 4px;
-
 }
 
 
 .brand-division {
-
     font-size: 8px;
 
     letter-spacing: 3px;
@@ -582,7 +543,6 @@ body {
     color: #747b7a;
 
     margin-top: 3px;
-
 }
 
 
@@ -592,16 +552,13 @@ body {
 ========================================= */
 
 nav {
-
     display: flex;
 
     gap: 30px;
-
 }
 
 
 nav a {
-
     color: #9da4a3;
 
     text-decoration: none;
@@ -612,14 +569,11 @@ nav a {
 
     transition:
         color 0.25s ease;
-
 }
 
 
 nav a:hover {
-
     color: #ffffff;
-
 }
 
 
@@ -629,7 +583,6 @@ nav a:hover {
 ========================================= */
 
 .access-intel {
-
     padding:
         10px 17px;
 
@@ -648,7 +601,6 @@ nav a:hover {
     letter-spacing: 2px;
 
     cursor: pointer;
-
 }
 
 
@@ -658,7 +610,6 @@ nav a:hover {
 ========================================= */
 
 .main-section {
-
     min-height: 100vh;
 
     padding:
@@ -668,12 +619,10 @@ nav a:hover {
         1px solid rgba(255,255,255,0.07);
 
     position: relative;
-
 }
 
 
 .section-code {
-
     font-size: 9px;
 
     letter-spacing: 3px;
@@ -681,23 +630,20 @@ nav a:hover {
     color: #666e6d;
 
     margin-bottom: 25px;
-
 }
 
 
 .main-section h2 {
-
-    font-size: clamp(35px, 6vw, 75px);
+    font-size:
+        clamp(35px, 6vw, 75px);
 
     letter-spacing: 7px;
 
     margin-bottom: 25px;
-
 }
 
 
 .section-description {
-
     max-width: 600px;
 
     color: #7d8583;
@@ -707,7 +653,6 @@ nav a:hover {
     letter-spacing: 2px;
 
     line-height: 2;
-
 }
 
 
@@ -717,25 +662,20 @@ nav a:hover {
 ========================================= */
 
 .hero {
-
     display: flex;
 
     flex-direction: column;
 
     justify-content: center;
-
 }
 
 
 .hero-content {
-
     max-width: 900px;
-
 }
 
 
 .small-title {
-
     font-size: 10px;
 
     letter-spacing: 5px;
@@ -743,33 +683,27 @@ nav a:hover {
     color: #6e7675;
 
     margin-bottom: 25px;
-
 }
 
 
 .hero h1 {
-
     font-size:
         clamp(50px, 9vw, 120px);
 
     line-height: 0.95;
 
     letter-spacing: 8px;
-
 }
 
 
 .hero h1 span {
-
     display: block;
 
     color: #777f7d;
-
 }
 
 
 .hero p {
-
     max-width: 650px;
 
     margin-top: 35px;
@@ -781,7 +715,6 @@ nav a:hover {
     letter-spacing: 3px;
 
     line-height: 2;
-
 }
 
 
@@ -791,7 +724,6 @@ nav a:hover {
 ========================================= */
 
 footer {
-
     min-height: 120px;
 
     padding:
@@ -813,7 +745,6 @@ footer {
 
     border-top:
         1px solid rgba(255,255,255,0.05);
-
 }
 
 
@@ -825,56 +756,48 @@ footer {
 @media (max-width: 900px) {
 
     .main-header {
-
         padding:
             0 20px;
-
     }
 
 
     nav {
-
         display: none;
-
     }
 
 
     .access-intel {
-
         display: none;
-
     }
 
 
+    /*
+       EN PANTALLAS PEQUEÑAS
+       EL EMBLEMA SE ADAPTA
+    */
     .intro-emblem img {
-
         width: 90vw;
 
+        max-width: 1000px;
     }
 
 
     .intro-name {
-
         font-size: 25px;
 
         letter-spacing: 7px;
-
     }
 
 
     .intro-p {
-
         font-size: 65px;
-
     }
 
 
     footer {
-
         flex-direction: column;
 
         align-items: flex-start;
-
     }
 
 }
@@ -883,36 +806,28 @@ footer {
 @media (max-width: 500px) {
 
     .intro-name {
-
         font-size: 20px;
 
         letter-spacing: 5px;
-
     }
 
 
     .intro-division {
-
         font-size: 8px;
 
         letter-spacing: 4px;
-
     }
 
 
     .secure-label {
-
         font-size: 8px;
 
         letter-spacing: 3px;
-
     }
 
 
     .intro-p {
-
         font-size: 55px;
-
     }
 
 }
