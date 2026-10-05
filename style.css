@@ -1,29 +1,14 @@
-/* =========================================
-   PARAGON // STRIKE DIVISION
-   MAIN STYLE
-========================================= */
-
+```css
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
-
-
-/* =========================================
-   VARIABLES
-========================================= */
 
 :root {
     --bg-main: #080a0b;
     --bg-dark: #030506;
     --text-main: #e8eceb;
     --text-muted: #747b7a;
-
     --border: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.14);
 }
-
-
-/* =========================================
-   RESET
-========================================= */
 
 * {
     margin: 0;
@@ -38,73 +23,54 @@ html {
 body {
     background: var(--bg-main);
     color: var(--text-main);
-
     font-family: "Orbitron", sans-serif;
-
     overflow-x: hidden;
 }
 
 
 /* =========================================
-   PRIMER PANEL
    SYSTEM BOOT
 ========================================= */
 
 #intro {
     position: fixed;
-
     inset: 0;
-
     width: 100%;
     height: 100vh;
-
     background: var(--bg-dark);
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     overflow: hidden;
-
     z-index: 9999;
-
-    transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 #intro.hidden {
     opacity: 0;
-
     visibility: hidden;
-
     pointer-events: none;
 }
 
 
 /* =========================================
-   LOGO DE FONDO DEL PRIMER PANEL
+   INTRO WATERMARK
 ========================================= */
 
 .intro-emblem {
     position: absolute;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
 
     width: 1000px;
     height: 1000px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     pointer-events: none;
-
     z-index: 0;
 }
 
@@ -117,52 +83,48 @@ body {
     opacity: 0.16;
 
     user-select: none;
+    pointer-events: none;
 
     animation: watermarkPulse 6s ease-in-out infinite;
 }
-
 
 @keyframes watermarkPulse {
 
     0%,
     100% {
         opacity: 0.13;
-
         transform: scale(1);
     }
 
     50% {
         opacity: 0.18;
-
         transform: scale(1.015);
     }
 }
 
 
 /* =========================================
-   GRID
+   INTRO GRID
 ========================================= */
 
 .intro-grid {
     position: absolute;
-
     inset: 0;
 
     background-image:
         linear-gradient(
-            rgba(255, 255, 255, 0.025) 1px,
+            rgba(255,255,255,0.025) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255, 255, 255, 0.025) 1px,
+            rgba(255,255,255,0.025) 1px,
             transparent 1px
         );
 
     background-size: 45px 45px;
 
     pointer-events: none;
-
     z-index: 1;
 }
 
@@ -173,19 +135,16 @@ body {
 
 #scanlines {
     position: absolute;
-
     inset: 0;
 
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            transparent 0px,
-            transparent 3px,
-            rgba(255, 255, 255, 0.025) 4px
-        );
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,0.025) 4px
+    );
 
     pointer-events: none;
-
     z-index: 2;
 }
 
@@ -196,13 +155,11 @@ body {
 
 #noise {
     position: absolute;
-
     inset: 0;
 
     opacity: 0.035;
 
     pointer-events: none;
-
     z-index: 3;
 
     background-image:
@@ -216,24 +173,16 @@ body {
 
 .intro-content {
     position: relative;
-
     z-index: 5;
 
     width: 90%;
-
     max-width: 700px;
 
     text-align: center;
 }
 
-
-/* =========================================
-   SYSTEM LABEL
-========================================= */
-
 .system-label {
     font-size: 11px;
-
     letter-spacing: 4px;
 
     color: var(--text-muted);
@@ -241,14 +190,8 @@ body {
     margin-bottom: 12px;
 }
 
-
-/* =========================================
-   SECURE LABEL
-========================================= */
-
 .secure-label {
     font-size: 9px;
-
     letter-spacing: 5px;
 
     color: #aeb5b4;
@@ -256,21 +199,13 @@ body {
     margin-bottom: 45px;
 }
 
-
-/* =========================================
-   INTRO LOGO
-   SIN LA P
-========================================= */
-
 .intro-logo {
     margin-bottom: 35px;
 }
 
 .intro-name {
     font-size: 38px;
-
     font-weight: 700;
-
     letter-spacing: 10px;
 
     margin-top: 10px;
@@ -278,7 +213,6 @@ body {
 
 .intro-division {
     font-size: 11px;
-
     letter-spacing: 7px;
 
     color: var(--text-muted);
@@ -286,21 +220,14 @@ body {
     margin-top: 8px;
 }
 
-
-/* =========================================
-   CONNECTION STATUS
-========================================= */
-
 .connection-status {
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     gap: 10px;
 
     font-size: 9px;
-
     letter-spacing: 3px;
 
     color: var(--text-muted);
@@ -316,28 +243,20 @@ body {
 
     background: #d9dddd;
 
-    box-shadow:
-        0 0 8px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 8px rgba(255,255,255,0.5);
 }
-
-
-/* =========================================
-   PROGRESS BAR
-========================================= */
 
 .progress-container {
     width: 100%;
-
     height: 2px;
 
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,0.08);
 
     margin: 0 auto 25px;
 }
 
 .progress-bar {
     width: 0%;
-
     height: 100%;
 
     background: #e8eceb;
@@ -345,24 +264,18 @@ body {
     transition: width 0.08s linear;
 }
 
-
-/* =========================================
-   ENTER
-========================================= */
-
 #skip {
     padding: 12px 30px;
 
     background: transparent;
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255,255,255,0.18);
 
     color: var(--text-main);
 
     font-family: "Orbitron", sans-serif;
 
     font-size: 9px;
-
     letter-spacing: 4px;
 
     cursor: pointer;
@@ -374,17 +287,16 @@ body {
 }
 
 #skip:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,0.08);
 
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255,255,255,0.4);
 
     color: #ffffff;
 }
 
 
 /* =========================================
-   HEADER
-   SEGUNDO PANEL SUPERIOR
+   MAIN HEADER
 ========================================= */
 
 .main-header {
@@ -394,20 +306,17 @@ body {
     left: 0;
 
     width: 100%;
-
     height: 100px;
 
     padding: 0 40px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    background: rgba(5, 7, 8, 0.30);
+    background: rgba(5,7,8,0.30);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
 
     backdrop-filter: blur(3px);
 
@@ -416,13 +325,11 @@ body {
 
 
 /* =========================================
-   LOGO PEQUEÑO
-   EXACTAMENTE 80 × 80
+   SMALL HEADER EMBLEM
 ========================================= */
 
 .header-emblem {
     width: 80px;
-
     height: 80px;
 
     object-fit: contain;
@@ -434,32 +341,23 @@ body {
     flex-shrink: 0;
 }
 
-
-/* =========================================
-   BRAND
-========================================= */
-
 .brand {
     display: flex;
-
     align-items: center;
 
     gap: 14px;
 
     position: relative;
-
     z-index: 2;
 }
 
 .brand-text {
     display: flex;
-
     flex-direction: column;
 }
 
 .brand-name {
     font-size: 18px;
-
     font-weight: 700;
 
     letter-spacing: 4px;
@@ -467,7 +365,6 @@ body {
 
 .brand-division {
     font-size: 8px;
-
     letter-spacing: 3px;
 
     color: var(--text-muted);
@@ -477,18 +374,16 @@ body {
 
 
 /* =========================================
-   NAV
+   NAVIGATION
 ========================================= */
 
 .main-nav {
     display: flex;
-
     align-items: center;
 
     gap: 30px;
 
     position: relative;
-
     z-index: 2;
 }
 
@@ -498,7 +393,6 @@ body {
     text-decoration: none;
 
     font-size: 9px;
-
     letter-spacing: 2px;
 
     position: relative;
@@ -512,11 +406,9 @@ body {
     position: absolute;
 
     left: 0;
-
     bottom: -8px;
 
     width: 0;
-
     height: 1px;
 
     background: #ffffff;
@@ -539,23 +431,21 @@ body {
 
 .header-actions {
     position: relative;
-
     z-index: 2;
 }
 
 .header-actions button {
     padding: 11px 18px;
 
-    background: rgba(0, 0, 0, 0.20);
+    background: rgba(0,0,0,0.20);
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255,255,255,0.15);
 
     color: var(--text-main);
 
     font-family: "Orbitron", sans-serif;
 
     font-size: 8px;
-
     letter-spacing: 2px;
 
     cursor: pointer;
@@ -566,9 +456,9 @@ body {
 }
 
 .header-actions button:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,0.08);
 
-    border-color: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255,255,255,0.35);
 }
 
 
@@ -586,8 +476,7 @@ main {
 
 
 /* =========================================
-   SEGUNDO PANEL
-   INICIO
+   SECOND PANEL / INICIO
 ========================================= */
 
 #inicio {
@@ -596,7 +485,6 @@ main {
     min-height: calc(100vh - 100px);
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -604,30 +492,21 @@ main {
 
     overflow: hidden;
 
-    background: rgba(5, 7, 8, 0.18);
+    background: #080a0b;
 }
 
 
 /* =========================================
-   LOGO DE FONDO
-   1000 × 1000
-   ESTE ES EL SEGUNDO PANEL
+   LARGE WATERMARK
+   THIS IS THE BACKGROUND OF #INICIO
 ========================================= */
 
 .main-watermark {
     position: absolute;
 
-    top: 50%;
-    left: 50%;
-
-    width: 1000px;
-
-    height: 1000px;
-
-    transform: translate(-50%, -50%);
+    inset: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -638,21 +517,23 @@ main {
 
 .main-watermark img {
     width: 1000px;
-
     height: 1000px;
+
+    max-width: none;
 
     object-fit: contain;
 
     opacity: 0.12;
 
     user-select: none;
-
     pointer-events: none;
+
+    filter: none;
 }
 
 
 /* =========================================
-   CONTENIDO DEL SEGUNDO PANEL
+   HOME CONTENT
 ========================================= */
 
 .home-content {
@@ -663,11 +544,6 @@ main {
     max-width: 900px;
 }
 
-
-/* =========================================
-   SECTION CODE
-========================================= */
-
 .section-code {
     font-size: 9px;
 
@@ -677,11 +553,6 @@ main {
 
     margin-bottom: 15px;
 }
-
-
-/* =========================================
-   HOME TITLE
-========================================= */
 
 .home-title {
     font-size: clamp(45px, 7vw, 90px);
@@ -717,13 +588,8 @@ section:not(#intro) {
 
     padding: 120px 7%;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-
-
-/* =========================================
-   SECTION TITLE
-========================================= */
 
 .section-title {
     font-size: 34px;
@@ -749,9 +615,9 @@ section:not(#intro) {
 ========================================= */
 
 .panel {
-    background: rgba(255, 255, 255, 0.025);
+    background: rgba(255,255,255,0.025);
 
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.08);
 
     padding: 30px;
 
@@ -786,11 +652,11 @@ section:not(#intro) {
 footer {
     padding: 35px 40px;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255,255,255,0.08);
 
     text-align: center;
 
-    background: rgba(3, 5, 6, 0.7);
+    background: rgba(3,5,6,0.7);
 }
 
 footer p {
@@ -803,7 +669,7 @@ footer p {
 
 
 /* =========================================
-   RESPONSIVE
+   TABLET
 ========================================= */
 
 @media (max-width: 1200px) {
@@ -818,6 +684,10 @@ footer p {
 }
 
 
+/* =========================================
+   MOBILE / TABLET
+========================================= */
+
 @media (max-width: 900px) {
 
     .main-header {
@@ -828,7 +698,6 @@ footer p {
 
     .header-emblem {
         width: 70px;
-
         height: 70px;
     }
 
@@ -852,34 +721,32 @@ footer p {
         min-height: calc(100vh - 90px);
     }
 
-    .main-watermark,
     .main-watermark img {
         width: 850px;
-
         height: 850px;
     }
 
     .intro-emblem {
         width: 90vw;
-
         height: 90vw;
     }
 
     .intro-emblem img {
         width: 90vw;
-
         max-width: 1000px;
-
         height: auto;
     }
 
     .intro-name {
         font-size: 30px;
-
         letter-spacing: 7px;
     }
 }
 
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
 
 @media (max-width: 600px) {
 
@@ -891,7 +758,6 @@ footer p {
 
     .header-emblem {
         width: 60px;
-
         height: 60px;
     }
 
@@ -921,10 +787,8 @@ footer p {
         min-height: calc(100vh - 80px);
     }
 
-    .main-watermark,
     .main-watermark img {
         width: 600px;
-
         height: 600px;
     }
 
@@ -954,3 +818,5 @@ footer p {
         letter-spacing: 3px;
     }
 }
+```
+
