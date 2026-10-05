@@ -76,11 +76,15 @@ body {
   transform: translate(-50%, -50%);
 
   background-image: url("paragon-emblem-4k.png");
-  background-position: center;
+
+  background-position: center center;
+
   background-repeat: no-repeat;
-  background-size: contain;
+
+  background-size: 1400px 1400px;
 
   pointer-events: none;
+
   z-index: 1;
 }
 
@@ -92,7 +96,6 @@ body {
 .command-watermark {
   opacity: 0.055;
 }
-
 
 /* =========================================================
    TECHNICAL GRID
