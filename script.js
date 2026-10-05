@@ -11,15 +11,35 @@ const statusText = document.getElementById("statusText");
 const skipButton = document.getElementById("skip");
 
 const statuses = [
-    { percent: 0, text: "ESTABLISHING SECURE CONNECTION..." },
-    { percent: 25, text: "VERIFYING PARAGON NETWORK..." },
-    { percent: 55, text: "AUTHENTICATING TACTICAL DATABASE..." },
-    { percent: 82, text: "LOADING STRIKE DIVISION..." },
-    { percent: 100, text: "SECURE CONNECTION ESTABLISHED." }
+    {
+        percent: 0,
+        text: "ESTABLISHING SECURE CONNECTION..."
+    },
+    {
+        percent: 25,
+        text: "VERIFYING PARAGON NETWORK..."
+    },
+    {
+        percent: 55,
+        text: "AUTHENTICATING TACTICAL DATABASE..."
+    },
+    {
+        percent: 82,
+        text: "LOADING STRIKE DIVISION..."
+    },
+    {
+        percent: 100,
+        text: "SECURE CONNECTION ESTABLISHED."
+    }
 ];
 
 let progress = 0;
 let finished = false;
+
+
+/* =========================================
+   UPDATE BOOT
+========================================= */
 
 function updateBoot() {
 
@@ -29,17 +49,23 @@ function updateBoot() {
         progress = 100;
     }
 
+
     progressBar.style.width =
         progress + "%";
+
 
     bootPercent.textContent =
         String(progress).padStart(2, "0") + "%";
 
 
-    const currentStatus = statuses
-        .slice()
-        .reverse()
-        .find(status => progress >= status.percent);
+    const currentStatus =
+        statuses
+            .slice()
+            .reverse()
+            .find(
+                status =>
+                    progress >= status.percent
+            );
 
 
     if (currentStatus) {
@@ -58,47 +84,64 @@ function updateBoot() {
 }
 
 
+/* =========================================
+   BOOT COMPLETE
+========================================= */
+
 function finishBoot() {
 
     if (finished) return;
 
     finished = true;
 
+
     statusText.textContent =
         "SECURE CONNECTION ESTABLISHED.";
 
 
-    setTimeout(() => {
-
-        hideIntro();
-
-    }, 700);
-}
-
-
-function hideIntro() {
-
-    intro.classList.add("hidden");
+    skipButton.disabled = false;
 
 }
 
 
-skipButton.addEventListener("click", () => {
+/* =========================================
+   ENTRAR
+========================================= */
 
-    hideIntro();
+skipButton.addEventListener(
+    "click",
+    () => {
 
-});
+        if (!finished) {
+            return;
+        }
 
+        intro.classList.add("hidden");
 
-const bootInterval = setInterval(() => {
-
-    updateBoot();
-
-    if (finished) {
-
-        clearInterval(bootInterval);
+        document.body.style.overflow = "auto";
 
     }
+);
 
-}, 45);
+
+/* =========================================
+   START
+========================================= */
+
+const bootInterval = setInterval(
+    () => {
+
+        updateBoot();
+
+        if (finished) {
+
+            clearInterval(
+                bootInterval
+            );
+
+        }
+
+    },
+    45
+);
 ```
