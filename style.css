@@ -15,6 +15,7 @@
     --bg-dark: #030506;
     --text-main: #e8eceb;
     --text-muted: #747b7a;
+
     --border: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.14);
 }
@@ -37,17 +38,21 @@ html {
 body {
     background: var(--bg-main);
     color: var(--text-main);
+
     font-family: "Orbitron", sans-serif;
+
     overflow-x: hidden;
 }
 
 
 /* =========================================
-   INTRO / SYSTEM BOOT
+   PRIMER PANEL
+   SYSTEM BOOT
 ========================================= */
 
 #intro {
     position: fixed;
+
     inset: 0;
 
     width: 100%;
@@ -56,6 +61,7 @@ body {
     background: var(--bg-dark);
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -70,13 +76,15 @@ body {
 
 #intro.hidden {
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 }
 
 
 /* =========================================
-   INTRO EMBLEM
+   LOGO DE FONDO DEL PRIMER PANEL
 ========================================= */
 
 .intro-emblem {
@@ -91,6 +99,7 @@ body {
     height: 1000px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -101,13 +110,9 @@ body {
 
 .intro-emblem img {
     width: 1000px;
-    max-width: 1000px;
-
-    height: auto;
+    height: 1000px;
 
     object-fit: contain;
-
-    filter: none;
 
     opacity: 0.16;
 
@@ -116,27 +121,31 @@ body {
     animation: watermarkPulse 6s ease-in-out infinite;
 }
 
+
 @keyframes watermarkPulse {
 
     0%,
     100% {
         opacity: 0.13;
+
         transform: scale(1);
     }
 
     50% {
         opacity: 0.18;
+
         transform: scale(1.015);
     }
 }
 
 
 /* =========================================
-   INTRO GRID
+   GRID
 ========================================= */
 
 .intro-grid {
     position: absolute;
+
     inset: 0;
 
     background-image:
@@ -164,6 +173,7 @@ body {
 
 #scanlines {
     position: absolute;
+
     inset: 0;
 
     background:
@@ -186,6 +196,7 @@ body {
 
 #noise {
     position: absolute;
+
     inset: 0;
 
     opacity: 0.035;
@@ -209,6 +220,7 @@ body {
     z-index: 5;
 
     width: 90%;
+
     max-width: 700px;
 
     text-align: center;
@@ -247,20 +259,11 @@ body {
 
 /* =========================================
    INTRO LOGO
+   SIN LA P
 ========================================= */
 
 .intro-logo {
     margin-bottom: 35px;
-}
-
-.intro-p {
-    font-size: 72px;
-
-    font-weight: 700;
-
-    letter-spacing: 8px;
-
-    line-height: 1;
 }
 
 .intro-name {
@@ -324,6 +327,7 @@ body {
 
 .progress-container {
     width: 100%;
+
     height: 2px;
 
     background: rgba(255, 255, 255, 0.08);
@@ -333,6 +337,7 @@ body {
 
 .progress-bar {
     width: 0%;
+
     height: 100%;
 
     background: #e8eceb;
@@ -342,7 +347,7 @@ body {
 
 
 /* =========================================
-   ENTER BUTTON
+   ENTER
 ========================================= */
 
 #skip {
@@ -378,7 +383,8 @@ body {
 
 
 /* =========================================
-   MAIN HEADER
+   HEADER
+   SEGUNDO PANEL SUPERIOR
 ========================================= */
 
 .main-header {
@@ -399,89 +405,24 @@ body {
 
     justify-content: space-between;
 
-    /*
-       CASI TRANSPARENTE
-       PARA DEJAR VER EL EMBLEMA
-    */
-    background: rgba(5, 7, 8, 0.35);
+    background: rgba(5, 7, 8, 0.30);
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(3px);
 
     z-index: 1000;
-
-    overflow: hidden;
 }
 
 
 /* =========================================
-   HEADER WATERMARK
-   LOGO 1000 × 1000
-========================================= */
-
-.header-watermark {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 1000px;
-    height: 1000px;
-
-    transform: translate(-50%, -50%);
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-.header-watermark img {
-    width: 1000px;
-    height: 1000px;
-
-    object-fit: contain;
-
-    /*
-       LOGO DE FONDO
-    */
-    opacity: 0.12;
-
-    user-select: none;
-
-    pointer-events: none;
-}
-
-
-/* =========================================
-   BRAND
-========================================= */
-
-.brand {
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 14px;
-}
-
-
-/* =========================================
-   HEADER EMBLEM
-   80 × 80
+   LOGO PEQUEÑO
+   EXACTAMENTE 80 × 80
 ========================================= */
 
 .header-emblem {
     width: 80px;
+
     height: 80px;
 
     object-fit: contain;
@@ -495,8 +436,20 @@ body {
 
 
 /* =========================================
-   BRAND TEXT
+   BRAND
 ========================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    position: relative;
+
+    z-index: 2;
+}
 
 .brand-text {
     display: flex;
@@ -524,19 +477,19 @@ body {
 
 
 /* =========================================
-   MAIN NAVIGATION
+   NAV
 ========================================= */
 
 .main-nav {
-    position: relative;
-
-    z-index: 2;
-
     display: flex;
 
     align-items: center;
 
     gap: 30px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
 .main-nav a {
@@ -559,9 +512,11 @@ body {
     position: absolute;
 
     left: 0;
+
     bottom: -8px;
 
     width: 0;
+
     height: 1px;
 
     background: #ffffff;
@@ -579,7 +534,7 @@ body {
 
 
 /* =========================================
-   HEADER ACTIONS
+   ACCESS INTEL
 ========================================= */
 
 .header-actions {
@@ -591,7 +546,7 @@ body {
 .header-actions button {
     padding: 11px 18px;
 
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.20);
 
     border: 1px solid rgba(255, 255, 255, 0.15);
 
@@ -618,7 +573,7 @@ body {
 
 
 /* =========================================
-   MAIN CONTENT
+   MAIN
 ========================================= */
 
 main {
@@ -629,19 +584,88 @@ main {
     z-index: 1;
 }
 
-section {
+
+/* =========================================
+   SEGUNDO PANEL
+   INICIO
+========================================= */
+
+#inicio {
     position: relative;
 
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
 
-    padding: 120px 7%;
+    display: flex;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background: rgba(5, 7, 8, 0.18);
 }
 
 
 /* =========================================
-   SECTION TITLES
+   LOGO DE FONDO
+   1000 × 1000
+   ESTE ES EL SEGUNDO PANEL
+========================================= */
+
+.main-watermark {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 1000px;
+
+    height: 1000px;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.main-watermark img {
+    width: 1000px;
+
+    height: 1000px;
+
+    object-fit: contain;
+
+    opacity: 0.12;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   CONTENIDO DEL SEGUNDO PANEL
+========================================= */
+
+.home-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 900px;
+}
+
+
+/* =========================================
+   SECTION CODE
 ========================================= */
 
 .section-code {
@@ -653,6 +677,53 @@ section {
 
     margin-bottom: 15px;
 }
+
+
+/* =========================================
+   HOME TITLE
+========================================= */
+
+.home-title {
+    font-size: clamp(45px, 7vw, 90px);
+
+    letter-spacing: 12px;
+
+    font-weight: 700;
+}
+
+.home-subtitle {
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    color: var(--text-muted);
+}
+
+.home-description {
+    margin-top: 35px;
+}
+
+
+/* =========================================
+   OTHER SECTIONS
+========================================= */
+
+section:not(#intro) {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 120px 7%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
 
 .section-title {
     font-size: 34px;
@@ -674,50 +745,7 @@ section {
 
 
 /* =========================================
-   HOME
-========================================= */
-
-#inicio {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    min-height: calc(100vh - 100px);
-}
-
-.home-content {
-    max-width: 900px;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-.home-title {
-    font-size: clamp(45px, 7vw, 90px);
-
-    letter-spacing: 12px;
-
-    font-weight: 700;
-}
-
-.home-subtitle {
-    margin-top: 15px;
-
-    font-size: 11px;
-
-    letter-spacing: 6px;
-
-    color: var(--text-muted);
-}
-
-
-/* =========================================
-   CARDS / PANELS
+   PANELS
 ========================================= */
 
 .panel {
@@ -728,6 +756,8 @@ section {
     padding: 30px;
 
     backdrop-filter: blur(5px);
+
+    margin-top: 50px;
 }
 
 .panel-title {
@@ -785,12 +815,6 @@ footer p {
     .main-nav a {
         font-size: 8px;
     }
-
-    .header-watermark,
-    .header-watermark img {
-        width: 850px;
-        height: 850px;
-    }
 }
 
 
@@ -804,6 +828,7 @@ footer p {
 
     .header-emblem {
         width: 70px;
+
         height: 70px;
     }
 
@@ -819,38 +844,39 @@ footer p {
         display: none;
     }
 
-    .header-watermark,
-    .header-watermark img {
-        width: 700px;
-        height: 700px;
-    }
-
     main {
         padding-top: 90px;
     }
 
-    section {
-        padding: 100px 6%;
+    #inicio {
+        min-height: calc(100vh - 90px);
     }
 
-    #intro .intro-emblem {
+    .main-watermark,
+    .main-watermark img {
+        width: 850px;
+
+        height: 850px;
+    }
+
+    .intro-emblem {
         width: 90vw;
+
         height: 90vw;
     }
 
     .intro-emblem img {
         width: 90vw;
+
         max-width: 1000px;
+
+        height: auto;
     }
 
     .intro-name {
-        font-size: 28px;
+        font-size: 30px;
 
         letter-spacing: 7px;
-    }
-
-    .intro-p {
-        font-size: 60px;
     }
 }
 
@@ -865,6 +891,7 @@ footer p {
 
     .header-emblem {
         width: 60px;
+
         height: 60px;
     }
 
@@ -886,18 +913,19 @@ footer p {
         font-size: 7px;
     }
 
-    .header-watermark,
-    .header-watermark img {
-        width: 550px;
-        height: 550px;
-    }
-
     main {
         padding-top: 80px;
     }
 
     #inicio {
         min-height: calc(100vh - 80px);
+    }
+
+    .main-watermark,
+    .main-watermark img {
+        width: 600px;
+
+        height: 600px;
     }
 
     .home-title {
@@ -912,7 +940,7 @@ footer p {
         letter-spacing: 4px;
     }
 
-    section {
+    section:not(#intro) {
         padding: 80px 5%;
     }
 
