@@ -1,49 +1,53 @@
 /* =========================================
    PARAGON // STRIKE DIVISION
-   INTRO SYSTEM
+   SYSTEM BOOT
+========================================= */
+
+
+/* =========================================
+   ELEMENTOS
 ========================================= */
 
 const intro = document.getElementById("intro");
 
-const progressBar = document.getElementById("progressBar");
+const progressBar =
+    document.getElementById("progressBar");
 
-const progressPercent =
-    document.getElementById("progressPercent");
-
-const systemStatus =
-    document.getElementById("systemStatus");
+const bootPercent =
+    document.getElementById("bootPercent");
 
 const statusText =
-    document.getElementById("status");
+    document.getElementById("statusText");
 
 const skipButton =
     document.getElementById("skip");
 
 
-let progress = 0;
-
-let loadingFinished = false;
-
 
 /* =========================================
-   MENSAJES DEL SISTEMA
+   ESTADOS DEL SISTEMA
 ========================================= */
 
 const statuses = [
 
     {
+        percent: 0,
+        text: "ESTABLISHING SECURE CONNECTION..."
+    },
+
+    {
         percent: 25,
-        text: "AUTHENTICATING PARAGON NETWORK..."
+        text: "VERIFYING PARAGON NETWORK..."
     },
 
     {
         percent: 55,
-        text: "VERIFYING SECURE CONNECTION..."
+        text: "AUTHENTICATING TACTICAL DATABASE..."
     },
 
     {
         percent: 82,
-        text: "ACCESSING STRIKE DIVISION..."
+        text: "LOADING STRIKE DIVISION..."
     },
 
     {
@@ -54,103 +58,133 @@ const statuses = [
 ];
 
 
+
 /* =========================================
-   ACTUALIZAR ESTADO
+   VARIABLES
 ========================================= */
 
-function updateStatus(value) {
+let progress = 0;
 
-    systemStatus.textContent =
-        `SYSTEM BOOT // ${String(value).padStart(2, "0")}%`;
+let finished = false;
 
-    progressPercent.textContent =
-        `${String(value).padStart(2, "0")}%`;
-
-    progressBar.style.width =
-        `${value}%`;
-
-
-    for (const item of statuses) {
-
-        if (value >= item.percent) {
-
-            statusText.textContent =
-                item.text;
-
-        }
-
-    }
-
-}
 
 
 /* =========================================
-   FINALIZAR INTRO
+   ACTUALIZAR SISTEMA
 ========================================= */
 
-function showSite() {
-
-    if (loadingFinished) return;
-
-    loadingFinished = true;
-
-    progress = 100;
-
-    updateStatus(100);
-
-
-    setTimeout(() => {
-
-        intro.style.opacity = "0";
-
-        intro.style.visibility = "hidden";
-
-        document.body.style.overflowY = "auto";
-
-    }, 600);
-
-}
-
-
-/* =========================================
-   CARGA
-========================================= */
-
-const loading = setInterval(() => {
+function updateBoot() {
 
     progress++;
 
-    updateStatus(progress);
+    if (progress > 100) {
+
+        progress = 100;
+
+    }
+
+
+    progressBar.style.width =
+        progress + "%";
+
+
+    bootPercent.textContent =
+        String(progress).padStart(2, "0") + "%";
+
+
+    const currentStatus =
+        statuses
+            .slice()
+            .reverse()
+            .find(
+                status =>
+                    progress >= status.percent
+            );
+
+
+    if (currentStatus) {
+
+        statusText.textContent =
+            currentStatus.text;
+
+    }
 
 
     if (progress >= 100) {
 
-        clearInterval(loading);
-
-        setTimeout(showSite, 700);
+        finishBoot();
 
     }
 
-}, 45);
+}
 
-
-/* =========================================
-   ENTRAR
-========================================= */
-
-skipButton.addEventListener("click", () => {
-
-    clearInterval(loading);
-
-    showSite();
-
-});
 
 
 /* =========================================
-   ESTADO INICIAL
+   FINALIZAR BOOT
 ========================================= */
 
-document.body.style.overflow = "hidden";
+function finishBoot() {
 
-updateStatus(0);
+    if (finished) return;
+
+    finished = true;
+
+
+    statusText.textContent =
+        "SECURE CONNECTION ESTABLISHED.";
+
+
+    setTimeout(() => {
+
+        hideIntro();
+
+    }, 700);
+
+}
+
+
+
+/* =========================================
+   OCULTAR INTRO
+========================================= */
+
+function hideIntro() {
+
+    intro.classList.add("hidden");
+
+}
+
+
+
+/* =========================================
+   BOTÓN ENTRAR
+========================================= */
+
+skipButton.addEventListener(
+    "click",
+    () => {
+
+        hideIntro();
+
+    }
+);
+
+
+
+/* =========================================
+   INICIAR SISTEMA
+========================================= */
+
+const bootInterval =
+    setInterval(() => {
+
+        updateBoot();
+
+        if (finished) {
+
+            clearInterval(bootInterval);
+
+        }
+
+    }, 45);
