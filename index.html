@@ -1,0 +1,337 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="PARAGON STRIKE DIVISION // SECURE TACTICAL NETWORK"
+    >
+
+    <meta
+        name="theme-color"
+        content="#050607"
+    >
+
+    <title>PARAGON | STRIKE DIVISION</title>
+
+    <!-- FUENTE -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         EFECTOS DE INTERFAZ
+    ========================================== -->
+
+    <div id="noise"></div>
+    <div id="scanlines"></div>
+
+
+    <!-- =========================================
+         INTRO
+    ========================================== -->
+
+    <section id="intro">
+
+        <div class="intro-grid"></div>
+
+        <div class="intro-content">
+
+            <div class="system-status">
+                SYSTEM BOOT // 00%
+            </div>
+
+            <div class="intro-line"></div>
+
+            <h2>
+                SECURE TACTICAL NETWORK
+            </h2>
+
+            <h1>
+                PARAGON
+            </h1>
+
+            <h3>
+                STRIKE DIVISION
+            </h3>
+
+            <p id="status">
+                ESTABLISHING SECURE CONNECTION...
+            </p>
+
+            <div class="progress-container">
+                <div id="progressBar"></div>
+            </div>
+
+            <button id="skip">
+                ENTRAR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SITIO PRINCIPAL
+    ========================================== -->
+
+    <main id="site">
+
+        <!-- HEADER -->
+
+        <header class="main-header">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    P
+                </div>
+
+                <div class="brand-text">
+
+                    <strong>
+                        PARAGON
+                    </strong>
+
+                    <span>
+                        STRIKE DIVISION
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav class="main-navigation">
+
+                <a href="#inicio">
+                    INICIO
+                </a>
+
+                <a href="#armoria">
+                    ARMERÍA
+                </a>
+
+                <a href="#equipamiento">
+                    EQUIPAMIENTO
+                </a>
+
+                <a href="#operadores">
+                    OPERADORES
+                </a>
+
+                <a href="#identificacion">
+                    IDENTIFICACIÓN
+                </a>
+
+            </nav>
+
+
+            <button class="operator-access">
+                ACCESS INTEL
+            </button>
+
+        </header>
+
+
+        <!-- =====================================
+             INICIO
+        ====================================== -->
+
+        <section id="inicio" class="hero">
+
+            <div class="hero-content">
+
+                <span class="section-code">
+                    PSD // 001
+                </span>
+
+                <h1>
+                    PARAGON
+                </h1>
+
+                <h2>
+                    STRIKE DIVISION
+                </h2>
+
+                <p>
+                    RED TÁCTICA DE OPERACIONES
+                    ESPECIALES Y EQUIPAMIENTO.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#armoria">
+                        ACCEDER A ARMERÍA
+                    </a>
+
+                    <a href="#equipamiento">
+                        VER EQUIPAMIENTO
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ARMERÍA
+        ====================================== -->
+
+        <section id="armoria" class="section">
+
+            <span class="section-code">
+                ARM // 001
+            </span>
+
+            <h2>
+                ARMERÍA
+            </h2>
+
+            <p>
+                PARAGON SECURE ARMORY DATABASE
+            </p>
+
+            <a
+                class="section-button"
+                href="https://scpfundacion21-sys.github.io/PARAGON-ARMERIA/"
+            >
+                ACCEDER A LA ARMERÍA
+            </a>
+
+        </section>
+
+
+        <!-- =====================================
+             EQUIPAMIENTO
+        ====================================== -->
+
+        <section id="equipamiento" class="section">
+
+            <span class="section-code">
+                EQP // 002
+            </span>
+
+            <h2>
+                EQUIPAMIENTO
+            </h2>
+
+            <p>
+                EQUIPAMIENTO TÁCTICO Y CONFIGURACIONES
+                OPERATIVAS.
+            </p>
+
+            <button class="section-button">
+                ACCEDER AL EQUIPAMIENTO
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             OPERADORES
+        ====================================== -->
+
+        <section id="operadores" class="section">
+
+            <span class="section-code">
+                OPS // 003
+            </span>
+
+            <h2>
+                OPERADORES
+            </h2>
+
+            <p>
+                ARCHIVO DE PERSONAL Y PERFILES
+                OPERATIVOS.
+            </p>
+
+            <button class="section-button">
+                CONSULTAR OPERADORES
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             IDENTIFICACIÓN
+        ====================================== -->
+
+        <section id="identificacion" class="section">
+
+            <span class="section-code">
+                ID // 004
+            </span>
+
+            <h2>
+                IDENTIFICACIÓN DE OPERADOR
+            </h2>
+
+            <p>
+                SISTEMA DE IDENTIFICACIÓN
+                PARAGON STRIKE DIVISION.
+            </p>
+
+            <button class="section-button">
+                ACCEDER
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer>
+
+            <div>
+                PARAGON // STRIKE DIVISION
+            </div>
+
+            <div>
+                SECURE TACTICAL NETWORK
+            </div>
+
+            <div>
+                SYSTEM STATUS: ONLINE
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
