@@ -10,113 +10,105 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="theme-color"
-        content="#030506"
-    >
+    <title>PARAGON // STRIKE DIVISION</title>
 
-    <title>PARAGON | STRIKE DIVISION</title>
-
-    <!-- FUENTE -->
+    <!-- GOOGLE FONT -->
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
     <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 
 <body>
 
+
     <!-- =========================================
-         PANTALLA DE CARGA
+         INTRO / SYSTEM BOOT
     ========================================== -->
 
     <section id="intro">
 
         <!-- EMBLEMA DE FONDO -->
-
         <div class="intro-emblem">
 
             <img
-                src="assets/paragon-emblem-4k.png"
+                src="paragon-emblem-4k.png"
                 alt="PARAGON STRIKE DIVISION"
             >
 
         </div>
 
 
-        <!-- EFECTOS -->
-
-        <div id="noise"></div>
-
-        <div id="scanlines"></div>
-
+        <!-- GRID -->
         <div class="intro-grid"></div>
 
 
-        <!-- CONTENIDO -->
+        <!-- SCANLINES -->
+        <div id="scanlines"></div>
 
+
+        <!-- NOISE -->
+        <div id="noise"></div>
+
+
+        <!-- CONTENIDO -->
         <div class="intro-content">
 
-            <div
-                id="systemStatus"
-                class="system-status"
-            >
-                SYSTEM BOOT // 00%
+            <div class="system-label">
+                SYSTEM BOOT // <span id="bootPercent">00%</span>
             </div>
 
 
-            <div class="intro-line"></div>
-
-
-            <div class="network-label">
+            <div class="secure-label">
                 SECURE TACTICAL NETWORK
             </div>
 
 
-            <h1>
-                PARAGON
-            </h1>
+            <div class="intro-logo">
+
+                <div class="intro-p">
+                    P
+                </div>
+
+                <div class="intro-name">
+                    PARAGON
+                </div>
+
+                <div class="intro-division">
+                    STRIKE DIVISION
+                </div>
+
+            </div>
 
 
-            <h2>
-                STRIKE DIVISION
-            </h2>
+            <div class="connection-status">
+
+                <span class="status-dot"></span>
+
+                <span id="statusText">
+                    ESTABLISHING SECURE CONNECTION...
+                </span>
+
+            </div>
 
 
-            <p id="status">
-                ESTABLISHING SECURE CONNECTION...
-            </p>
-
-
-            <!-- BARRA -->
-
+            <!-- BARRA DE PROGRESO -->
             <div class="progress-container">
 
-                <div id="progressBar"></div>
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
 
             </div>
 
 
-            <!-- PORCENTAJE -->
-
-            <div
-                id="progressPercent"
-                class="progress-percent"
-            >
-                00%
-            </div>
-
-
-            <!-- ENTRAR -->
-
+            <!-- BOTÓN -->
             <button id="skip">
                 ENTRAR
             </button>
@@ -133,27 +125,26 @@
 
     <main id="site">
 
+
+        <!-- HEADER -->
+
         <header class="main-header">
 
             <div class="brand">
 
-                <div class="brand-mark">
-
-                    <img
-                        src="assets/paragon-emblem-4k.png"
-                        alt="PARAGON"
-                    >
-
-                </div>
-
+                <img
+                    src="paragon-emblem-4k.png"
+                    alt="PARAGON"
+                    class="header-emblem"
+                >
 
                 <div class="brand-text">
 
-                    <strong>
+                    <span class="brand-name">
                         PARAGON
-                    </strong>
+                    </span>
 
-                    <span>
+                    <span class="brand-division">
                         STRIKE DIVISION
                     </span>
 
@@ -187,7 +178,7 @@
             </nav>
 
 
-            <button class="intel-button">
+            <button class="access-intel">
                 ACCESS INTEL
             </button>
 
@@ -201,25 +192,27 @@
 
         <section
             id="inicio"
-            class="hero"
+            class="main-section hero"
         >
+
+            <div class="section-code">
+                PSD // 001
+            </div>
 
             <div class="hero-content">
 
-                <span>
-                    PSD // 001
-                </span>
+                <div class="small-title">
+                    PARAGON SECURE NETWORK
+                </div>
 
                 <h1>
-                    PARAGON
+                    STRIKE
+                    <span>DIVISION</span>
                 </h1>
 
-                <h2>
-                    STRIKE DIVISION
-                </h2>
-
                 <p>
-                    SECURE TACTICAL NETWORK
+                    SISTEMA TÁCTICO DE INFORMACIÓN
+                    Y OPERACIONES ESPECIALIZADAS.
                 </p>
 
             </div>
@@ -234,27 +227,21 @@
 
         <section
             id="armeria"
-            class="section"
+            class="main-section"
         >
 
-            <span>
+            <div class="section-code">
                 ARM // 001
-            </span>
+            </div>
 
             <h2>
                 ARMERÍA
             </h2>
 
-            <p>
-                PARAGON SECURE ARMORY DATABASE
+            <p class="section-description">
+                BASE DE DATOS DE ARMAMENTO
+                Y SISTEMAS DE COMBATE.
             </p>
-
-            <a
-                href="https://scpfundacion21-sys.github.io/PARAGON-ARMERIA/"
-                class="section-button"
-            >
-                ACCEDER
-            </a>
 
         </section>
 
@@ -266,19 +253,19 @@
 
         <section
             id="equipamiento"
-            class="section"
+            class="main-section"
         >
 
-            <span>
+            <div class="section-code">
                 EQP // 002
-            </span>
+            </div>
 
             <h2>
                 EQUIPAMIENTO
             </h2>
 
-            <p>
-                EQUIPAMIENTO TÁCTICO Y CONFIGURACIONES
+            <p class="section-description">
+                EQUIPO TÁCTICO Y CONFIGURACIONES
                 OPERATIVAS.
             </p>
 
@@ -292,20 +279,20 @@
 
         <section
             id="operadores"
-            class="section"
+            class="main-section"
         >
 
-            <span>
+            <div class="section-code">
                 OPS // 003
-            </span>
+            </div>
 
             <h2>
                 OPERADORES
             </h2>
 
-            <p>
-                ARCHIVO DE PERSONAL Y PERFILES
-                OPERATIVOS.
+            <p class="section-description">
+                PERSONAL OPERATIVO
+                DE PARAGON STRIKE DIVISION.
             </p>
 
         </section>
@@ -318,20 +305,20 @@
 
         <section
             id="identificacion"
-            class="section"
+            class="main-section"
         >
 
-            <span>
+            <div class="section-code">
                 ID // 004
-            </span>
+            </div>
 
             <h2>
                 IDENTIFICACIÓN DE OPERADOR
             </h2>
 
-            <p>
+            <p class="section-description">
                 SISTEMA DE IDENTIFICACIÓN
-                PARAGON STRIKE DIVISION.
+                DEL PERSONAL PARAGON.
             </p>
 
         </section>
@@ -344,21 +331,25 @@
 
         <footer>
 
-            <span>
+            <div>
                 PARAGON // STRIKE DIVISION
-            </span>
+            </div>
 
-            <span>
+            <div>
+                SECURE TACTICAL NETWORK
+            </div>
+
+            <div>
                 SYSTEM STATUS: ONLINE
-            </span>
+            </div>
 
         </footer>
+
 
     </main>
 
 
     <!-- JAVASCRIPT -->
-
     <script src="script.js"></script>
 
 </body>
