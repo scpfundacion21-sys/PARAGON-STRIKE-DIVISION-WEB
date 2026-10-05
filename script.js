@@ -1,52 +1,80 @@
-```javascript
-/* =========================================
+/* =====================================================
    PARAGON // STRIKE DIVISION
    SYSTEM BOOT
-========================================= */
+===================================================== */
 
-const intro = document.getElementById("intro");
-const progressBar = document.getElementById("progressBar");
-const bootPercent = document.getElementById("bootPercent");
-const statusText = document.getElementById("statusText");
-const skipButton = document.getElementById("skip");
 
-const statuses = [
+/* =====================================================
+   ELEMENTOS
+===================================================== */
+
+const intro =
+    document.getElementById("intro");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const bootPercent =
+    document.getElementById("bootPercent");
+
+const statusText =
+    document.getElementById("statusText");
+
+const enterButton =
+    document.getElementById("enterButton");
+
+
+/* =====================================================
+   ESTADOS
+===================================================== */
+
+const bootStatuses = [
+
     {
         percent: 0,
         text: "ESTABLISHING SECURE CONNECTION..."
     },
+
     {
         percent: 25,
         text: "VERIFYING PARAGON NETWORK..."
     },
+
     {
-        percent: 55,
+        percent: 50,
         text: "AUTHENTICATING TACTICAL DATABASE..."
     },
+
     {
-        percent: 82,
+        percent: 75,
         text: "LOADING STRIKE DIVISION..."
     },
+
     {
         percent: 100,
         text: "SECURE CONNECTION ESTABLISHED."
     }
+
 ];
 
+
 let progress = 0;
-let finished = false;
+
+let bootComplete = false;
 
 
-/* =========================================
-   UPDATE BOOT
-========================================= */
+/* =====================================================
+   ACTUALIZAR BOOT
+===================================================== */
 
 function updateBoot() {
 
     progress++;
 
     if (progress > 100) {
+
         progress = 100;
+
     }
 
 
@@ -58,90 +86,122 @@ function updateBoot() {
         String(progress).padStart(2, "0") + "%";
 
 
-    const currentStatus =
-        statuses
-            .slice()
-            .reverse()
-            .find(
-                status =>
-                    progress >= status.percent
-            );
+    let currentStatus =
+        bootStatuses[0];
 
 
-    if (currentStatus) {
+    for (
+        let i = 0;
+        i < bootStatuses.length;
+        i++
+    ) {
 
-        statusText.textContent =
-            currentStatus.text;
+        if (
+            progress >=
+            bootStatuses[i].percent
+        ) {
+
+            currentStatus =
+                bootStatuses[i];
+
+        }
 
     }
+
+
+    statusText.textContent =
+        currentStatus.text;
 
 
     if (progress >= 100) {
 
-        finishBoot();
+        completeBoot();
 
     }
+
 }
 
 
-/* =========================================
-   BOOT COMPLETE
-========================================= */
+/* =====================================================
+   BOOT COMPLETADO
+===================================================== */
 
-function finishBoot() {
+function completeBoot() {
 
-    if (finished) return;
+    if (bootComplete) {
 
-    finished = true;
+        return;
+
+    }
+
+
+    bootComplete = true;
+
+
+    progress = 100;
+
+
+    progressBar.style.width =
+        "100%";
+
+
+    bootPercent.textContent =
+        "100%";
 
 
     statusText.textContent =
         "SECURE CONNECTION ESTABLISHED.";
 
 
-    skipButton.disabled = false;
+    enterButton.disabled = false;
 
 }
 
 
-/* =========================================
+/* =====================================================
    ENTRAR
-========================================= */
+===================================================== */
 
-skipButton.addEventListener(
+enterButton.addEventListener(
     "click",
-    () => {
+    function () {
 
-        if (!finished) {
+        if (!bootComplete) {
+
             return;
+
         }
+
 
         intro.classList.add("hidden");
 
-        document.body.style.overflow = "auto";
+
+        document.body.style.overflow =
+            "auto";
 
     }
 );
 
 
-/* =========================================
-   START
-========================================= */
+/* =====================================================
+   INICIAR SISTEMA
+===================================================== */
 
-const bootInterval = setInterval(
-    () => {
+const bootInterval =
+    setInterval(
+        function () {
 
-        updateBoot();
+            updateBoot();
 
-        if (finished) {
 
-            clearInterval(
-                bootInterval
-            );
+            if (bootComplete) {
 
-        }
+                clearInterval(
+                    bootInterval
+                );
 
-    },
-    45
-);
-```
+            }
+
+        },
+        45
+    );
