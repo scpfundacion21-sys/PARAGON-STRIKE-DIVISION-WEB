@@ -1,6 +1,6 @@
 /* =========================================
    PARAGON // STRIKE DIVISION
-   MAIN WEBSITE
+   GLOBAL STYLE
 ========================================= */
 
 * {
@@ -9,12 +9,14 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    background: #030506;
+    background: #080a0b;
     color: #e8eceb;
     font-family: "Orbitron", sans-serif;
     overflow-x: hidden;
@@ -28,20 +30,32 @@ body {
 #intro {
     position: fixed;
     inset: 0;
-    z-index: 9999;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    height: 100vh;
 
     background: #030506;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     overflow: hidden;
 
+    z-index: 9999;
+
     transition:
-        opacity 0.9s ease,
-        visibility 0.9s ease;
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
+
+
+#intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 
 
 /* =========================================
@@ -51,60 +65,65 @@ body {
 .intro-emblem {
     position: absolute;
 
-    top: 50%;
-    left: 50%;
-
-    width: min(72vw, 850px);
-
-    transform: translate(-50%, -50%);
+    inset: 0;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    z-index: 1;
 
     pointer-events: none;
 
-    opacity: 0;
-
-    animation: emblemAppear 2s ease forwards;
+    overflow: hidden;
 }
 
+
 .intro-emblem img {
-    width: 100%;
+    width: min(75vw, 900px);
+
+    max-width: 900px;
+
     height: auto;
 
-    display: block;
+    opacity: 0.20;
 
     filter:
         grayscale(1)
-        contrast(1.15)
-        brightness(0.75);
-
-    opacity: 0.12;
+        brightness(1.25)
+        contrast(1.15);
 
     user-select: none;
+
+    animation:
+        emblemPulse 6s ease-in-out infinite;
 }
 
 
-/* =========================================
-   EFECTO DE LUZ DEL EMBLEMA
-========================================= */
+@keyframes emblemPulse {
 
-.intro-emblem::after {
-    content: "";
+    0%,
+    100% {
 
-    position: absolute;
-    inset: 0;
+        opacity: 0.16;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,0.08),
-            transparent 65%
-        );
+        transform:
+            scale(1);
 
-    pointer-events: none;
+    }
+
+
+    50% {
+
+        opacity: 0.24;
+
+        transform:
+            scale(1.025);
+
+    }
+
 }
+
 
 
 /* =========================================
@@ -112,31 +131,33 @@ body {
 ========================================= */
 
 .intro-grid {
+
     position: absolute;
+
     inset: 0;
 
-    opacity: 0.12;
+    z-index: 2;
+
+    pointer-events: none;
 
     background-image:
+
         linear-gradient(
-            rgba(255,255,255,0.06) 1px,
+            rgba(255,255,255,0.035) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
-            rgba(255,255,255,0.06) 1px,
+            rgba(255,255,255,0.035) 1px,
             transparent 1px
         );
 
-    background-size: 50px 50px;
+    background-size:
+        50px 50px;
 
-    mask-image:
-        radial-gradient(
-            ellipse at center,
-            black 20%,
-            transparent 75%
-        );
 }
+
 
 
 /* =========================================
@@ -144,22 +165,26 @@ body {
 ========================================= */
 
 #scanlines {
+
     position: absolute;
+
     inset: 0;
+
+    z-index: 3;
 
     pointer-events: none;
 
     background:
+
         repeating-linear-gradient(
             to bottom,
-            rgba(255,255,255,0.025) 0px,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px,
-            transparent 4px
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,0.025) 4px
         );
 
-    opacity: 0.35;
 }
+
 
 
 /* =========================================
@@ -167,179 +192,253 @@ body {
 ========================================= */
 
 #noise {
+
     position: absolute;
-    inset: -50%;
+
+    inset: 0;
+
+    z-index: 4;
 
     pointer-events: none;
 
-    opacity: 0.035;
+    opacity: 0.08;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
 
-    animation: noiseMove 0.2s steps(2) infinite;
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
 }
 
 
+
 /* =========================================
-   CONTENIDO
+   INTRO CONTENT
 ========================================= */
 
 .intro-content {
+
     position: relative;
+
     z-index: 10;
 
-    width: min(90%, 700px);
+    width: min(90%, 650px);
 
     text-align: center;
+
 }
 
 
+
 /* =========================================
-   SYSTEM STATUS
+   SYSTEM LABEL
 ========================================= */
 
-.system-status {
-    font-size: 11px;
+.system-label {
+
+    font-size: 13px;
+
     letter-spacing: 4px;
 
-    opacity: 0.75;
+    color: #9fa7a6;
 
-    margin-bottom: 22px;
+    margin-bottom: 14px;
+
 }
 
 
-/* =========================================
-   LINEA
-========================================= */
+#bootPercent {
 
-.intro-line {
-    width: 100%;
-    height: 1px;
+    color: #ffffff;
 
-    background: rgba(232,236,235,0.25);
-
-    margin-bottom: 28px;
 }
 
 
+
 /* =========================================
-   NETWORK
+   SECURE LABEL
 ========================================= */
 
-.network-label {
+.secure-label {
+
     font-size: 11px;
+
     letter-spacing: 5px;
 
-    opacity: 0.65;
+    color: #707776;
 
-    margin-bottom: 20px;
+    margin-bottom: 55px;
+
 }
 
 
+
 /* =========================================
-   TITULO
+   INTRO LOGO
 ========================================= */
 
-.intro-content h1 {
-    font-size: clamp(42px, 8vw, 90px);
+.intro-logo {
+
+    margin-bottom: 45px;
+
+}
+
+
+.intro-p {
+
+    font-size: 80px;
+
+    font-weight: 800;
+
+    line-height: 0.9;
+
+    letter-spacing: 8px;
+
+    color: #f1f3f2;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.12);
+
+}
+
+
+.intro-name {
+
+    margin-top: 15px;
+
+    font-size: 32px;
 
     font-weight: 700;
 
-    letter-spacing: 14px;
+    letter-spacing: 10px;
 
-    margin-left: 14px;
-
-    line-height: 1;
 }
 
 
-.intro-content h2 {
-    font-size: clamp(12px, 2vw, 18px);
+.intro-division {
 
-    font-weight: 400;
+    margin-top: 8px;
 
-    letter-spacing: 9px;
+    font-size: 11px;
 
-    margin-left: 9px;
+    letter-spacing: 6px;
 
-    margin-top: 14px;
+    color: #7f8786;
 
-    opacity: 0.7;
 }
+
 
 
 /* =========================================
-   STATUS
+   CONNECTION STATUS
 ========================================= */
 
-#status {
-    margin-top: 48px;
+.connection-status {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
 
     font-size: 10px;
 
     letter-spacing: 3px;
 
-    opacity: 0.65;
+    color: #8d9694;
+
 }
+
+
+.status-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #dfe5e3;
+
+    box-shadow:
+        0 0 10px rgba(255,255,255,0.7);
+
+    animation:
+        statusPulse 1.2s infinite;
+
+}
+
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+
+        opacity: 0.35;
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+    }
+
+}
+
 
 
 /* =========================================
-   PROGRESS
+   PROGRESS BAR
 ========================================= */
 
 .progress-container {
-    width: min(100%, 500px);
+
+    width: 100%;
 
     height: 2px;
 
-    margin: 22px auto 0;
-
-    background: rgba(255,255,255,0.12);
+    background:
+        rgba(255,255,255,0.08);
 
     overflow: hidden;
+
+    margin-bottom: 35px;
+
 }
 
 
-#progressBar {
+.progress-bar {
+
     width: 0%;
+
     height: 100%;
 
     background: #e8eceb;
 
-    transition: width 0.08s linear;
+    box-shadow:
+        0 0 12px rgba(255,255,255,0.35);
+
 }
 
 
-/* =========================================
-   PORCENTAJE
-========================================= */
-
-.progress-percent {
-    margin-top: 10px;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    opacity: 0.55;
-}
-
 
 /* =========================================
-   BOTON
+   ENTRAR BUTTON
 ========================================= */
 
 #skip {
-    margin-top: 35px;
 
-    padding: 12px 28px;
+    padding: 13px 35px;
 
     background: transparent;
 
-    color: #e8eceb;
+    border: 1px solid rgba(255,255,255,0.25);
 
-    border: 1px solid rgba(232,236,235,0.35);
+    color: #e8eceb;
 
     font-family: "Orbitron", sans-serif;
 
@@ -351,35 +450,36 @@ body {
 
     transition:
         background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
+        border 0.3s ease,
+        color 0.3s ease;
+
 }
 
 
 #skip:hover {
+
     background: #e8eceb;
 
-    color: #030506;
+    color: #080a0b;
 
     border-color: #e8eceb;
+
 }
+
 
 
 /* =========================================
-   SITIO PRINCIPAL
+   MAIN SITE
 ========================================= */
 
 #site {
+
     min-height: 100vh;
 
-    background:
-        radial-gradient(
-            circle at center,
-            #101416 0%,
-            #050708 45%,
-            #030506 100%
-        );
+    background: #080a0b;
+
 }
+
 
 
 /* =========================================
@@ -387,12 +487,18 @@ body {
 ========================================= */
 
 .main-header {
-    position: sticky;
+
+    position: fixed;
+
     top: 0;
+    left: 0;
 
-    z-index: 100;
+    width: 100%;
 
-    min-height: 80px;
+    height: 80px;
+
+    padding:
+        0 40px;
 
     display: flex;
 
@@ -400,14 +506,19 @@ body {
 
     justify-content: space-between;
 
-    padding: 15px 5%;
+    background:
+        rgba(5,7,8,0.92);
 
-    background: rgba(3,5,6,0.9);
+    border-bottom:
+        1px solid rgba(255,255,255,0.08);
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter:
+        blur(12px);
 
-    backdrop-filter: blur(12px);
+    z-index: 1000;
+
 }
+
 
 
 /* =========================================
@@ -415,70 +526,83 @@ body {
 ========================================= */
 
 .brand {
+
     display: flex;
 
     align-items: center;
 
     gap: 14px;
+
 }
 
 
-.brand-mark {
-    width: 42px;
-    height: 42px;
+.header-emblem {
 
-    overflow: hidden;
-}
+    width: 45px;
 
-
-.brand-mark img {
-    width: 100%;
-    height: 100%;
+    height: 45px;
 
     object-fit: contain;
 
-    filter: grayscale(1);
+    opacity: 0.85;
+
+    filter:
+        grayscale(1)
+        brightness(1.2);
+
 }
 
 
 .brand-text {
+
     display: flex;
 
     flex-direction: column;
 
-    gap: 3px;
 }
 
 
-.brand-text strong {
-    font-size: 14px;
+.brand-name {
 
-    letter-spacing: 3px;
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
 }
 
 
-.brand-text span {
+.brand-division {
+
     font-size: 8px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    opacity: 0.55;
+    color: #747b7a;
+
+    margin-top: 3px;
+
 }
+
 
 
 /* =========================================
-   NAVEGACION
+   NAVIGATION
 ========================================= */
 
 nav {
+
     display: flex;
 
-    gap: 28px;
+    gap: 30px;
+
 }
 
 
 nav a {
-    color: #e8eceb;
+
+    color: #9da4a3;
 
     text-decoration: none;
 
@@ -486,38 +610,106 @@ nav a {
 
     letter-spacing: 2px;
 
-    opacity: 0.65;
+    transition:
+        color 0.25s ease;
 
-    transition: opacity 0.3s ease;
 }
 
 
 nav a:hover {
-    opacity: 1;
+
+    color: #ffffff;
+
 }
+
 
 
 /* =========================================
    ACCESS INTEL
 ========================================= */
 
-.intel-button {
+.access-intel {
+
+    padding:
+        10px 17px;
+
     background: transparent;
 
-    color: #e8eceb;
+    border:
+        1px solid rgba(255,255,255,0.2);
 
-    border: 1px solid rgba(255,255,255,0.25);
+    color: #dfe3e2;
 
-    padding: 10px 16px;
-
-    font-family: "Orbitron", sans-serif;
+    font-family:
+        "Orbitron", sans-serif;
 
     font-size: 8px;
 
     letter-spacing: 2px;
 
     cursor: pointer;
+
 }
+
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.main-section {
+
+    min-height: 100vh;
+
+    padding:
+        140px 8% 80px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.07);
+
+    position: relative;
+
+}
+
+
+.section-code {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #666e6d;
+
+    margin-bottom: 25px;
+
+}
+
+
+.main-section h2 {
+
+    font-size: clamp(35px, 6vw, 75px);
+
+    letter-spacing: 7px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.section-description {
+
+    max-width: 600px;
+
+    color: #7d8583;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    line-height: 2;
+
+}
+
 
 
 /* =========================================
@@ -525,117 +717,73 @@ nav a:hover {
 ========================================= */
 
 .hero {
-    min-height: 85vh;
 
     display: flex;
 
-    align-items: center;
+    flex-direction: column;
 
     justify-content: center;
 
-    text-align: center;
-
-    padding: 80px 20px;
 }
 
 
-.hero-content span,
-.section > span {
-    font-size: 9px;
+.hero-content {
 
-    letter-spacing: 4px;
+    max-width: 900px;
 
-    opacity: 0.45;
+}
+
+
+.small-title {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #6e7675;
+
+    margin-bottom: 25px;
+
 }
 
 
 .hero h1 {
-    margin-top: 20px;
 
-    font-size: clamp(50px, 10vw, 120px);
+    font-size:
+        clamp(50px, 9vw, 120px);
 
-    letter-spacing: 15px;
+    line-height: 0.95;
 
-    margin-left: 15px;
+    letter-spacing: 8px;
+
 }
 
 
-.hero h2 {
-    font-size: 16px;
+.hero h1 span {
 
-    font-weight: 400;
+    display: block;
 
-    letter-spacing: 9px;
+    color: #777f7d;
 
-    opacity: 0.6;
 }
 
 
 .hero p {
+
+    max-width: 650px;
+
     margin-top: 35px;
 
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    opacity: 0.5;
-}
-
-
-/* =========================================
-   SECCIONES
-========================================= */
-
-.section {
-    min-height: 60vh;
-
-    padding: 120px 10%;
-
-    border-top: 1px solid rgba(255,255,255,0.07);
-}
-
-
-.section h2 {
-    margin-top: 18px;
-
-    font-size: clamp(30px, 5vw, 60px);
-
-    letter-spacing: 6px;
-}
-
-
-.section p {
-    margin-top: 20px;
-
-    max-width: 600px;
+    color: #858d8b;
 
     font-size: 11px;
 
+    letter-spacing: 3px;
+
     line-height: 2;
 
-    letter-spacing: 2px;
-
-    opacity: 0.55;
 }
 
-
-.section-button {
-    display: inline-block;
-
-    margin-top: 35px;
-
-    padding: 13px 22px;
-
-    border: 1px solid rgba(255,255,255,0.25);
-
-    color: #e8eceb;
-
-    text-decoration: none;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-}
 
 
 /* =========================================
@@ -643,70 +791,31 @@ nav a:hover {
 ========================================= */
 
 footer {
+
+    min-height: 120px;
+
+    padding:
+        30px 8%;
+
     display: flex;
+
+    align-items: center;
 
     justify-content: space-between;
 
-    padding: 30px 5%;
+    gap: 20px;
 
-    border-top: 1px solid rgba(255,255,255,0.07);
+    color: #565e5d;
 
     font-size: 8px;
 
     letter-spacing: 2px;
 
-    opacity: 0.4;
-}
-
-
-/* =========================================
-   ANIMACIONES
-========================================= */
-
-@keyframes emblemAppear {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translate(-50%, -50%)
-            scale(0.94);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translate(-50%, -50%)
-            scale(1);
-    }
+    border-top:
+        1px solid rgba(255,255,255,0.05);
 
 }
 
-
-@keyframes noiseMove {
-
-    0% {
-        transform: translate(0,0);
-    }
-
-    25% {
-        transform: translate(2%, -1%);
-    }
-
-    50% {
-        transform: translate(-1%, 2%);
-    }
-
-    75% {
-        transform: translate(1%, 1%);
-    }
-
-    100% {
-        transform: translate(0,0);
-    }
-
-}
 
 
 /* =========================================
@@ -715,43 +824,95 @@ footer {
 
 @media (max-width: 900px) {
 
-    nav {
-        display: none;
+    .main-header {
+
+        padding:
+            0 20px;
+
     }
 
-    .intel-button {
+
+    nav {
+
         display: none;
+
+    }
+
+
+    .access-intel {
+
+        display: none;
+
+    }
+
+
+    .intro-emblem img {
+
+        width: 90vw;
+
+    }
+
+
+    .intro-name {
+
+        font-size: 25px;
+
+        letter-spacing: 7px;
+
+    }
+
+
+    .intro-p {
+
+        font-size: 65px;
+
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
     }
 
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
 
-    .intro-emblem {
-        width: 110vw;
-    }
+    .intro-name {
 
-    .intro-emblem img {
-        opacity: 0.09;
-    }
+        font-size: 20px;
 
-    .intro-content h1 {
-        letter-spacing: 8px;
-
-        margin-left: 8px;
-    }
-
-    .intro-content h2 {
         letter-spacing: 5px;
 
-        margin-left: 5px;
     }
 
-    footer {
-        flex-direction: column;
 
-        gap: 12px;
+    .intro-division {
+
+        font-size: 8px;
+
+        letter-spacing: 4px;
+
+    }
+
+
+    .secure-label {
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+
+    }
+
+
+    .intro-p {
+
+        font-size: 55px;
+
     }
 
 }
