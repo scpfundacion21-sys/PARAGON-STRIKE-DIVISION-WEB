@@ -1,6 +1,27 @@
 /* =========================================
    PARAGON // STRIKE DIVISION
-   GLOBAL STYLE
+   MAIN STYLE
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+    --bg-main: #080a0b;
+    --bg-dark: #030506;
+    --text-main: #e8eceb;
+    --text-muted: #747b7a;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-light: rgba(255, 255, 255, 0.14);
+}
+
+
+/* =========================================
+   RESET
 ========================================= */
 
 * {
@@ -9,22 +30,20 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-    background: #080a0b;
-    color: #e8eceb;
+    background: var(--bg-main);
+    color: var(--text-main);
     font-family: "Orbitron", sans-serif;
     overflow-x: hidden;
 }
 
 
 /* =========================================
-   INTRO
+   INTRO / SYSTEM BOOT
 ========================================= */
 
 #intro {
@@ -34,11 +53,11 @@ body {
     width: 100%;
     height: 100vh;
 
-    background: #030506;
+    background: var(--bg-dark);
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     overflow: hidden;
 
@@ -49,7 +68,6 @@ body {
         visibility 0.8s ease;
 }
 
-
 #intro.hidden {
     opacity: 0;
     visibility: hidden;
@@ -57,113 +75,87 @@ body {
 }
 
 
-
 /* =========================================
-   EMBLEMA DE FONDO // MARCA DE AGUA
+   INTRO EMBLEM
 ========================================= */
 
 .intro-emblem {
     position: absolute;
 
-    inset: 0;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 1000px;
+    height: 1000px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    z-index: 1;
+    justify-content: center;
 
     pointer-events: none;
 
-    overflow: hidden;
+    z-index: 0;
 }
 
-
 .intro-emblem img {
-    /*
-       1000 PX EN PC
-    */
     width: 1000px;
-
     max-width: 1000px;
 
     height: auto;
 
-    /*
-       CONSERVA LOS COLORES
-       ORIGINALES DEL EMBLEMA
-    */
+    object-fit: contain;
+
     filter: none;
 
-    /*
-       EFECTO MARCA DE AGUA
-    */
     opacity: 0.16;
 
     user-select: none;
 
-    /*
-       MOVIMIENTO MUY SUTIL
-    */
-    animation:
-        watermarkPulse 6s ease-in-out infinite;
+    animation: watermarkPulse 6s ease-in-out infinite;
 }
-
 
 @keyframes watermarkPulse {
 
     0%,
     100% {
-
         opacity: 0.13;
-
-        transform:
-            scale(1);
+        transform: scale(1);
     }
-
 
     50% {
-
         opacity: 0.18;
-
-        transform:
-            scale(1.015);
+        transform: scale(1.015);
     }
-
 }
 
 
-
 /* =========================================
-   GRID
+   INTRO GRID
 ========================================= */
 
 .intro-grid {
     position: absolute;
-
     inset: 0;
 
-    z-index: 2;
-
-    pointer-events: none;
-
     background-image:
-
         linear-gradient(
-            rgba(255,255,255,0.035) 1px,
+            rgba(255, 255, 255, 0.025) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
-            rgba(255,255,255,0.035) 1px,
+            rgba(255, 255, 255, 0.025) 1px,
             transparent 1px
         );
 
-    background-size:
-        50px 50px;
-}
+    background-size: 45px 45px;
 
+    pointer-events: none;
+
+    z-index: 1;
+}
 
 
 /* =========================================
@@ -172,23 +164,20 @@ body {
 
 #scanlines {
     position: absolute;
-
     inset: 0;
 
-    z-index: 3;
-
-    pointer-events: none;
-
     background:
-
         repeating-linear-gradient(
             to bottom,
             transparent 0px,
             transparent 3px,
-            rgba(255,255,255,0.025) 4px
+            rgba(255, 255, 255, 0.025) 4px
         );
-}
 
+    pointer-events: none;
+
+    z-index: 2;
+}
 
 
 /* =========================================
@@ -197,20 +186,17 @@ body {
 
 #noise {
     position: absolute;
-
     inset: 0;
 
-    z-index: 4;
+    opacity: 0.035;
 
     pointer-events: none;
 
-    opacity: 0.08;
+    z-index: 3;
 
     background-image:
-
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
-
 
 
 /* =========================================
@@ -220,13 +206,13 @@ body {
 .intro-content {
     position: relative;
 
-    z-index: 10;
+    z-index: 5;
 
-    width: min(90%, 650px);
+    width: 90%;
+    max-width: 700px;
 
     text-align: center;
 }
-
 
 
 /* =========================================
@@ -234,20 +220,14 @@ body {
 ========================================= */
 
 .system-label {
-    font-size: 13px;
+    font-size: 11px;
 
     letter-spacing: 4px;
 
-    color: #9fa7a6;
+    color: var(--text-muted);
 
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 }
-
-
-#bootPercent {
-    color: #ffffff;
-}
-
 
 
 /* =========================================
@@ -255,15 +235,14 @@ body {
 ========================================= */
 
 .secure-label {
-    font-size: 11px;
+    font-size: 9px;
 
     letter-spacing: 5px;
 
-    color: #707776;
+    color: #aeb5b4;
 
-    margin-bottom: 55px;
+    margin-bottom: 45px;
 }
-
 
 
 /* =========================================
@@ -271,47 +250,38 @@ body {
 ========================================= */
 
 .intro-logo {
-    margin-bottom: 45px;
+    margin-bottom: 35px;
 }
 
-
 .intro-p {
-    font-size: 80px;
+    font-size: 72px;
 
-    font-weight: 800;
-
-    line-height: 0.9;
+    font-weight: 700;
 
     letter-spacing: 8px;
 
-    color: #f1f3f2;
-
-    text-shadow:
-        0 0 20px rgba(255,255,255,0.12);
+    line-height: 1;
 }
 
-
 .intro-name {
-    margin-top: 15px;
-
-    font-size: 32px;
+    font-size: 38px;
 
     font-weight: 700;
 
     letter-spacing: 10px;
-}
 
+    margin-top: 10px;
+}
 
 .intro-division {
-    margin-top: 8px;
-
     font-size: 11px;
 
-    letter-spacing: 6px;
+    letter-spacing: 7px;
 
-    color: #7f8786;
+    color: var(--text-muted);
+
+    margin-top: 8px;
 }
-
 
 
 /* =========================================
@@ -322,51 +292,30 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 10px;
 
-    margin-bottom: 18px;
-
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
-    color: #8d9694;
+    color: var(--text-muted);
+
+    margin-bottom: 20px;
 }
 
-
 .status-dot {
-    width: 7px;
-
-    height: 7px;
+    width: 6px;
+    height: 6px;
 
     border-radius: 50%;
 
-    background: #dfe5e3;
+    background: #d9dddd;
 
     box-shadow:
-        0 0 10px rgba(255,255,255,0.7);
-
-    animation:
-        statusPulse 1.2s infinite;
+        0 0 8px rgba(255, 255, 255, 0.5);
 }
-
-
-@keyframes statusPulse {
-
-    0%,
-    100% {
-        opacity: 0.35;
-    }
-
-    50% {
-        opacity: 1;
-    }
-
-}
-
 
 
 /* =========================================
@@ -375,49 +324,39 @@ body {
 
 .progress-container {
     width: 100%;
-
     height: 2px;
 
-    background:
-        rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
 
-    overflow: hidden;
-
-    margin-bottom: 35px;
+    margin: 0 auto 25px;
 }
-
 
 .progress-bar {
     width: 0%;
-
     height: 100%;
 
     background: #e8eceb;
 
-    box-shadow:
-        0 0 12px rgba(255,255,255,0.35);
+    transition: width 0.08s linear;
 }
 
 
-
 /* =========================================
-   ENTRAR BUTTON
+   ENTER BUTTON
 ========================================= */
 
 #skip {
-    padding: 13px 35px;
+    padding: 12px 30px;
 
     background: transparent;
 
-    border:
-        1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255, 255, 255, 0.18);
 
-    color: #e8eceb;
+    color: var(--text-main);
 
-    font-family:
-        "Orbitron", sans-serif;
+    font-family: "Orbitron", sans-serif;
 
-    font-size: 10px;
+    font-size: 9px;
 
     letter-spacing: 4px;
 
@@ -429,31 +368,17 @@ body {
         color 0.3s ease;
 }
 
-
 #skip:hover {
-    background: #e8eceb;
+    background: rgba(255, 255, 255, 0.08);
 
-    color: #080a0b;
+    border-color: rgba(255, 255, 255, 0.4);
 
-    border-color: #e8eceb;
+    color: #ffffff;
 }
 
 
-
 /* =========================================
-   MAIN SITE
-========================================= */
-
-#site {
-    min-height: 100vh;
-
-    background: #080a0b;
-}
-
-
-
-/* =========================================
-   HEADER
+   MAIN HEADER
 ========================================= */
 
 .main-header {
@@ -464,10 +389,9 @@ body {
 
     width: 100%;
 
-    height: 80px;
+    height: 100px;
 
-    padding:
-        0 40px;
+    padding: 0 40px;
 
     display: flex;
 
@@ -475,18 +399,63 @@ body {
 
     justify-content: space-between;
 
-    background:
-        rgba(5,7,8,0.92);
+    /*
+       CASI TRANSPARENTE
+       PARA DEJAR VER EL EMBLEMA
+    */
+    background: rgba(5, 7, 8, 0.35);
 
-    border-bottom:
-        1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    backdrop-filter:
-        blur(12px);
+    backdrop-filter: blur(4px);
 
     z-index: 1000;
+
+    overflow: hidden;
 }
 
+
+/* =========================================
+   HEADER WATERMARK
+   LOGO 1000 × 1000
+========================================= */
+
+.header-watermark {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 1000px;
+    height: 1000px;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.header-watermark img {
+    width: 1000px;
+    height: 1000px;
+
+    object-fit: contain;
+
+    /*
+       LOGO DE FONDO
+    */
+    opacity: 0.12;
+
+    user-select: none;
+
+    pointer-events: none;
+}
 
 
 /* =========================================
@@ -494,6 +463,10 @@ body {
 ========================================= */
 
 .brand {
+    position: relative;
+
+    z-index: 2;
+
     display: flex;
 
     align-items: center;
@@ -502,29 +475,34 @@ body {
 }
 
 
-.header-emblem {
-    width: 45px;
+/* =========================================
+   HEADER EMBLEM
+   80 × 80
+========================================= */
 
-    height: 45px;
+.header-emblem {
+    width: 80px;
+    height: 80px;
 
     object-fit: contain;
 
     opacity: 0.85;
 
-    /*
-       TAMBIÉN CONSERVA LOS
-       COLORES DEL EMBLEMA
-    */
     filter: none;
+
+    flex-shrink: 0;
 }
 
+
+/* =========================================
+   BRAND TEXT
+========================================= */
 
 .brand-text {
     display: flex;
 
     flex-direction: column;
 }
-
 
 .brand-name {
     font-size: 18px;
@@ -534,32 +512,35 @@ body {
     letter-spacing: 4px;
 }
 
-
 .brand-division {
     font-size: 8px;
 
     letter-spacing: 3px;
 
-    color: #747b7a;
+    color: var(--text-muted);
 
     margin-top: 3px;
 }
 
 
-
 /* =========================================
-   NAVIGATION
+   MAIN NAVIGATION
 ========================================= */
 
-nav {
+.main-nav {
+    position: relative;
+
+    z-index: 2;
+
     display: flex;
+
+    align-items: center;
 
     gap: 30px;
 }
 
-
-nav a {
-    color: #9da4a3;
+.main-nav a {
+    color: var(--text-main);
 
     text-decoration: none;
 
@@ -567,156 +548,205 @@ nav a {
 
     letter-spacing: 2px;
 
-    transition:
-        color 0.25s ease;
+    position: relative;
+
+    transition: color 0.3s ease;
 }
 
+.main-nav a::after {
+    content: "";
 
-nav a:hover {
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: #ffffff;
+
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover {
     color: #ffffff;
 }
 
+.main-nav a:hover::after {
+    width: 100%;
+}
 
 
 /* =========================================
-   ACCESS INTEL
+   HEADER ACTIONS
 ========================================= */
 
-.access-intel {
-    padding:
-        10px 17px;
+.header-actions {
+    position: relative;
 
-    background: transparent;
+    z-index: 2;
+}
 
-    border:
-        1px solid rgba(255,255,255,0.2);
+.header-actions button {
+    padding: 11px 18px;
 
-    color: #dfe3e2;
+    background: rgba(0, 0, 0, 0.25);
 
-    font-family:
-        "Orbitron", sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    color: var(--text-main);
+
+    font-family: "Orbitron", sans-serif;
 
     font-size: 8px;
 
     letter-spacing: 2px;
 
     cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
+.header-actions button:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    border-color: rgba(255, 255, 255, 0.35);
+}
 
 
 /* =========================================
-   SECTIONS
+   MAIN CONTENT
 ========================================= */
 
-.main-section {
-    min-height: 100vh;
-
-    padding:
-        140px 8% 80px;
-
-    border-bottom:
-        1px solid rgba(255,255,255,0.07);
-
+main {
     position: relative;
+
+    padding-top: 100px;
+
+    z-index: 1;
 }
 
+section {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 120px 7%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================
+   SECTION TITLES
+========================================= */
 
 .section-code {
     font-size: 9px;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 
-    color: #666e6d;
+    color: var(--text-muted);
 
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
-
-.main-section h2 {
-    font-size:
-        clamp(35px, 6vw, 75px);
-
-    letter-spacing: 7px;
-
-    margin-bottom: 25px;
-}
-
-
-.section-description {
-    max-width: 600px;
-
-    color: #7d8583;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    line-height: 2;
-}
-
-
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero {
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-}
-
-
-.hero-content {
-    max-width: 900px;
-}
-
-
-.small-title {
-    font-size: 10px;
+.section-title {
+    font-size: 34px;
 
     letter-spacing: 5px;
 
-    color: #6e7675;
-
-    margin-bottom: 25px;
+    font-weight: 600;
 }
 
+.section-subtitle {
+    margin-top: 12px;
 
-.hero h1 {
-    font-size:
-        clamp(50px, 9vw, 120px);
-
-    line-height: 0.95;
-
-    letter-spacing: 8px;
-}
-
-
-.hero h1 span {
-    display: block;
-
-    color: #777f7d;
-}
-
-
-.hero p {
-    max-width: 650px;
-
-    margin-top: 35px;
-
-    color: #858d8b;
-
-    font-size: 11px;
+    font-size: 9px;
 
     letter-spacing: 3px;
 
-    line-height: 2;
+    color: var(--text-muted);
 }
 
+
+/* =========================================
+   HOME
+========================================= */
+
+#inicio {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    min-height: calc(100vh - 100px);
+}
+
+.home-content {
+    max-width: 900px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.home-title {
+    font-size: clamp(45px, 7vw, 90px);
+
+    letter-spacing: 12px;
+
+    font-weight: 700;
+}
+
+.home-subtitle {
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================
+   CARDS / PANELS
+========================================= */
+
+.panel {
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    padding: 30px;
+
+    backdrop-filter: blur(5px);
+}
+
+.panel-title {
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 12px;
+}
+
+.panel-text {
+    font-size: 9px;
+
+    line-height: 2;
+
+    color: var(--text-muted);
+
+    letter-spacing: 1px;
+}
 
 
 /* =========================================
@@ -724,110 +754,175 @@ nav a:hover {
 ========================================= */
 
 footer {
-    min-height: 120px;
+    padding: 35px 40px;
 
-    padding:
-        30px 8%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-    display: flex;
+    text-align: center;
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    color: #565e5d;
-
-    font-size: 8px;
-
-    letter-spacing: 2px;
-
-    border-top:
-        1px solid rgba(255,255,255,0.05);
+    background: rgba(3, 5, 6, 0.7);
 }
 
+footer p {
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    color: var(--text-muted);
+}
 
 
 /* =========================================
    RESPONSIVE
 ========================================= */
 
+@media (max-width: 1200px) {
+
+    .main-nav {
+        gap: 18px;
+    }
+
+    .main-nav a {
+        font-size: 8px;
+    }
+
+    .header-watermark,
+    .header-watermark img {
+        width: 850px;
+        height: 850px;
+    }
+}
+
+
 @media (max-width: 900px) {
 
     .main-header {
-        padding:
-            0 20px;
+        height: 90px;
+
+        padding: 0 20px;
     }
 
+    .header-emblem {
+        width: 70px;
+        height: 70px;
+    }
 
-    nav {
+    .brand-name {
+        font-size: 15px;
+    }
+
+    .brand-division {
+        font-size: 7px;
+    }
+
+    .main-nav {
         display: none;
     }
 
-
-    .access-intel {
-        display: none;
+    .header-watermark,
+    .header-watermark img {
+        width: 700px;
+        height: 700px;
     }
 
+    main {
+        padding-top: 90px;
+    }
 
-    /*
-       EN PANTALLAS PEQUEÑAS
-       EL EMBLEMA SE ADAPTA
-    */
+    section {
+        padding: 100px 6%;
+    }
+
+    #intro .intro-emblem {
+        width: 90vw;
+        height: 90vw;
+    }
+
     .intro-emblem img {
         width: 90vw;
-
         max-width: 1000px;
     }
 
-
     .intro-name {
-        font-size: 25px;
+        font-size: 28px;
 
         letter-spacing: 7px;
     }
 
-
     .intro-p {
-        font-size: 65px;
+        font-size: 60px;
     }
-
-
-    footer {
-        flex-direction: column;
-
-        align-items: flex-start;
-    }
-
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 
-    .intro-name {
-        font-size: 20px;
+    .main-header {
+        height: 80px;
 
-        letter-spacing: 5px;
+        padding: 0 15px;
     }
 
+    .header-emblem {
+        width: 60px;
+        height: 60px;
+    }
 
-    .intro-division {
+    .brand-name {
+        font-size: 13px;
+
+        letter-spacing: 3px;
+    }
+
+    .brand-division {
+        font-size: 6px;
+
+        letter-spacing: 2px;
+    }
+
+    .header-actions button {
+        padding: 9px 12px;
+
+        font-size: 7px;
+    }
+
+    .header-watermark,
+    .header-watermark img {
+        width: 550px;
+        height: 550px;
+    }
+
+    main {
+        padding-top: 80px;
+    }
+
+    #inicio {
+        min-height: calc(100vh - 80px);
+    }
+
+    .home-title {
+        font-size: 38px;
+
+        letter-spacing: 7px;
+    }
+
+    .home-subtitle {
         font-size: 8px;
 
         letter-spacing: 4px;
     }
 
+    section {
+        padding: 80px 5%;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
 
     .secure-label {
-        font-size: 8px;
+        font-size: 7px;
 
         letter-spacing: 3px;
     }
-
-
-    .intro-p {
-        font-size: 55px;
-    }
-
 }
