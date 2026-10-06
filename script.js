@@ -1,175 +1,197 @@
-/* =========================================================
-   PARAGON // STRIKE DIVISION
+/* =========================================
+   PARAGON STRIKE DIVISION
    SYSTEM BOOT
-========================================================= */
-
-const bootScreen = document.getElementById("boot-screen");
-const commandCenter = document.getElementById("command-center");
-
-const progressBar = document.getElementById("progress-bar");
-const progressText = document.getElementById("progress-text");
-const bootPercent = document.getElementById("boot-percent");
-
-const bootStatus = document.getElementById("boot-status");
-const bootWarning = document.getElementById("boot-warning");
-
-const enterButton = document.getElementById("enter-button");
+========================================= */
 
 
-/* =========================================================
-   BOOT VARIABLES
-========================================================= */
+/* =========================================
+   ELEMENTS
+========================================= */
 
-let progress = 0;
+const bootScreen = document.getElementById("bootScreen");
+
+const mainSystem = document.getElementById("mainSystem");
+
+const progressFill = document.getElementById("progressFill");
+
+const progressText = document.getElementById("progressText");
+
+const systemStatus = document.getElementById("systemStatus");
+
+const enterButton = document.getElementById("enterButton");
+
+
+/* =========================================
+   BOOT STATUS
+========================================= */
 
 const bootMessages = [
-  {
-    percent: 0,
-    text: "ESTABLISHING SECURE CONNECTION..."
-  },
-  {
-    percent: 25,
-    text: "VERIFYING PARAGON NETWORK..."
-  },
-  {
-    percent: 50,
-    text: "AUTHENTICATING TACTICAL DATABASE..."
-  },
-  {
-    percent: 75,
-    text: "LOADING STRIKE DIVISION..."
-  },
-  {
-    percent: 100,
-    text: "SECURE CONNECTION ESTABLISHED."
-  }
+
+    {
+        percent: 0,
+        text: "INITIALIZING..."
+    },
+
+    {
+        percent: 15,
+        text: "LOADING CORE..."
+    },
+
+    {
+        percent: 30,
+        text: "CHECKING SECURITY..."
+    },
+
+    {
+        percent: 45,
+        text: "ESTABLISHING CONNECTION..."
+    },
+
+    {
+        percent: 60,
+        text: "LOADING DATABASE..."
+    },
+
+    {
+        percent: 75,
+        text: "VERIFYING SYSTEM..."
+    },
+
+    {
+        percent: 90,
+        text: "SYSTEM READY..."
+    },
+
+    {
+        percent: 100,
+        text: "CONNECTION ESTABLISHED"
+    }
+
 ];
 
 
-/* =========================================================
-   UPDATE BOOT
-========================================================= */
+/* =========================================
+   BOOT PROCESS
+========================================= */
+
+let progress = 0;
+
+const bootDuration = 5000;
+
+const startTime = Date.now();
+
 
 function updateBoot() {
 
-  progressBar.style.width = progress + "%";
+    const elapsed = Date.now() - startTime;
 
-  progressText.textContent =
-    String(progress).padStart(2, "0") + "%";
-
-  bootPercent.textContent =
-    String(progress).padStart(2, "0") + "%";
-
-
-  let currentMessage =
-    bootMessages[0].text;
+    progress = Math.min(
+        Math.floor(
+            (elapsed / bootDuration) * 100
+        ),
+        100
+    );
 
 
-  for (let i = 0; i < bootMessages.length; i++) {
+    progressFill.style.width =
+        progress + "%";
 
-    if (progress >= bootMessages[i].percent) {
 
-      currentMessage =
-        bootMessages[i].text;
+    progressText.textContent =
+        String(progress).padStart(2, "0") + "%";
+
+
+    let currentMessage =
+        bootMessages[0];
+
+
+    for (const message of bootMessages) {
+
+        if (progress >= message.percent) {
+
+            currentMessage = message;
+
+        }
+
     }
-  }
 
 
-  bootStatus.textContent =
-    currentMessage;
+    systemStatus.textContent =
+        currentMessage.text;
 
 
-  /* =========================================
-     100%
-  ========================================== */
+    if (progress < 100) {
 
-  if (progress >= 100) {
+        requestAnimationFrame(
+            updateBoot
+        );
 
-    progress = 100;
+    } else {
 
-    progressBar.style.width = "100%";
+        finishBoot();
 
-    progressText.textContent = "100%";
+    }
 
-    bootPercent.textContent = "100%";
-
-    bootStatus.textContent =
-      "SECURE CONNECTION ESTABLISHED.";
-
-
-    bootWarning.textContent =
-      "SYSTEM READY // USER AUTHENTICATION REQUIRED";
-
-
-    /* ACTIVAR BOTÓN */
-
-    enterButton.disabled = false;
-
-    enterButton.style.opacity = "1";
-
-  }
 }
 
 
-/* =========================================================
-   BOOT LOOP
-========================================================= */
+/* =========================================
+   FINISH BOOT
+========================================= */
 
-const bootInterval = setInterval(() => {
+function finishBoot() {
 
-  if (progress < 100) {
+    setTimeout(() => {
 
-    progress++;
+        bootScreen.classList.add(
+            "hidden"
+        );
 
-    updateBoot();
+        mainSystem.classList.add(
+            "visible"
+        );
 
-  } else {
+    }, 800);
 
-    /*
-       MUY IMPORTANTE:
-
-       NO hacemos ninguna transición aquí.
-
-       El sistema queda detenido en 100%.
-    */
-
-    clearInterval(bootInterval);
-  }
-
-}, 55);
+}
 
 
-/* =========================================================
-   ENTRAR
-========================================================= */
+/* =========================================
+   ENTER BUTTON
+========================================= */
 
-enterButton.addEventListener("click", () => {
+enterButton.addEventListener(
+    "click",
+    () => {
 
-  if (enterButton.disabled) {
-    return;
-  }
+        enterButton.style.pointerEvents =
+            "none";
+
+        enterButton.style.opacity =
+            "0.5";
+
+        /*
+         * Aquí agregaremos después
+         * el menú principal.
+         */
+
+        console.log(
+            "PARAGON SYSTEM ENTERED"
+        );
+
+    }
+);
 
 
-  /* Evitar doble clic */
+/* =========================================
+   START
+========================================= */
 
-  enterButton.disabled = true;
+window.addEventListener(
+    "load",
+    () => {
 
+        updateBoot();
 
-  /* Fade del SYSTEM BOOT */
-
-  bootScreen.classList.add("fade-out");
-
-
-  setTimeout(() => {
-
-    bootScreen.style.display = "none";
-
-    commandCenter.style.display = "block";
-
-    commandCenter.classList.add("fade-in");
-
-    window.scrollTo(0, 0);
-
-  }, 800);
-
-});
+    }
+);
