@@ -1,431 +1,228 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-  <title>PARAGON // STRIKE DIVISION</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>PARAGON // STRIKE DIVISION</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =====================================================
-       INTERFAZ 01 // SYSTEM BOOT
-  ====================================================== -->
+    <!-- =========================================
+         SYSTEM BOOT
+    ========================================== -->
 
-  <section id="boot-screen" class="screen boot-screen">
+    <div id="bootScreen">
 
-    <!-- MARCA DE AGUA -->
-    <div class="boot-watermark"></div>
+        <div class="boot-grid"></div>
 
-    <!-- EFECTOS -->
-    <div class="scanlines"></div>
-    <div class="noise"></div>
-    <div class="technical-grid"></div>
+        <div class="boot-content">
 
-    <div class="boot-content">
+            <div class="boot-small">
+                PARAGON STRIKE DIVISION
+            </div>
 
-      <div class="boot-system">
-        SYSTEM BOOT // <span id="boot-percent">00%</span>
-      </div>
+            <div class="boot-title">
+                SYSTEM BOOT
+            </div>
 
-      <div class="boot-line"></div>
+            <div class="boot-status">
+                SECURE CONNECTION ESTABLISHED
+            </div>
 
-      <div class="boot-label">
-        SECURE TACTICAL NETWORK
-      </div>
+            <div class="progress-container">
 
-      <h1>PARAGON</h1>
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
 
-      <h2>STRIKE DIVISION</h2>
+                <div class="progress-info">
+                    <span id="progressText">00%</span>
+                    <span id="systemStatus">INITIALIZING...</span>
+                </div>
 
-      <div class="boot-status" id="boot-status">
-        ESTABLISHING SECURE CONNECTION...
-      </div>
+            </div>
 
-      <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
-      </div>
+            <div class="boot-code">
+                PSD // SECURE NETWORK
+            </div>
 
-      <div class="progress-number">
-        <span id="progress-text">00%</span>
-      </div>
+        </div>
 
-      <button id="enter-button" disabled>
-        ENTRAR
-      </button>
-
-      <div class="boot-warning" id="boot-warning">
-        SYSTEM INITIALIZATION IN PROGRESS
-      </div>
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
 
     </div>
 
-  </section>
+
+    <!-- =========================================
+         MAIN SYSTEM
+    ========================================== -->
+
+    <main id="mainSystem">
+
+        <div class="background"></div>
+
+        <div class="dark-overlay"></div>
+
+        <div class="scanlines"></div>
+
+        <div class="interface-border"></div>
 
 
-  <!-- =====================================================
-       INTERFAZ 02 // COMMAND CENTER
-  ====================================================== -->
+        <!-- TOP BAR -->
 
-  <section id="command-center" class="screen command-screen">
+        <header class="top-bar">
 
-    <!-- MARCA DE AGUA CENTRAL -->
-    <div class="command-watermark"></div>
+            <div class="top-left-info">
 
-    <!-- EFECTOS -->
-    <div class="scanlines"></div>
-    <div class="noise"></div>
-    <div class="technical-grid"></div>
+                <span class="system-dot"></span>
 
-
-    <!-- =================================================
-         HEADER
-    ================================================== -->
-
-    <header class="main-header">
-
-      <div class="brand">
-
-        <div class="brand-emblem">
-          <img src="paragon-emblem-4k.png" alt="PARAGON">
-        </div>
-
-        <div class="brand-text">
-          <strong>PARAGON</strong>
-          <span>STRIKE DIVISION</span>
-        </div>
-
-      </div>
-
-
-      <div class="network-status">
-        <span class="status-dot"></span>
-        NETWORK ONLINE
-      </div>
-
-
-      <button class="intel-button">
-        ACCESS INTEL
-      </button>
-
-    </header>
-
-
-    <!-- =================================================
-         MAIN
-    ================================================== -->
-
-    <main>
-
-      <!-- HERO -->
-
-      <section class="hero">
-
-        <div class="hero-code">
-          PSD // COMMAND CENTER
-        </div>
-
-        <h1>PARAGON</h1>
-
-        <h2>STRIKE DIVISION</h2>
-
-        <p>
-          SECURE TACTICAL NETWORK
-        </p>
-
-        <div class="hero-line"></div>
-
-      </section>
-
-
-      <!-- =================================================
-           SYSTEM STATUS
-      ================================================== -->
-
-      <section class="status-section">
-
-        <div class="section-heading">
-          <span>SYS // 001</span>
-          <strong>SYSTEM STATUS</strong>
-        </div>
-
-
-        <div class="status-grid">
-
-          <div class="status-card">
-            <span>SYSTEM</span>
-            <strong>OPERATIONAL</strong>
-            <small>STATUS // ACTIVE</small>
-          </div>
-
-          <div class="status-card">
-            <span>NETWORK</span>
-            <strong>SECURE</strong>
-            <small>ENCRYPTION // ACTIVE</small>
-          </div>
-
-          <div class="status-card">
-            <span>CLEARANCE</span>
-            <strong>LEVEL 04</strong>
-            <small>ACCESS // VERIFIED</small>
-          </div>
-
-          <div class="status-card">
-            <span>DATABASE</span>
-            <strong>ONLINE</strong>
-            <small>SYNC // COMPLETE</small>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =================================================
-           COMMAND MODULES
-      ================================================== -->
-
-      <section class="modules-section">
-
-        <div class="section-heading">
-          <span>CMD // 002</span>
-          <strong>COMMAND MODULES</strong>
-        </div>
-
-
-        <div class="modules-grid">
-
-
-          <article class="module">
-
-            <div class="module-number">
-              01
-            </div>
-
-            <div class="module-content">
-
-              <h3>INTELLIGENCE</h3>
-
-              <p>
-                INFORMACIÓN ESTRATÉGICA,<br>
-                ARCHIVOS Y DATOS DE PARAGON.
-              </p>
-
-              <button>
-                ACCESS DATABASE
-              </button>
+                <span>
+                    SYSTEM ONLINE
+                </span>
 
             </div>
 
-          </article>
 
+            <div class="top-center">
 
-          <article class="module">
-
-            <div class="module-number">
-              02
-            </div>
-
-            <div class="module-content">
-
-              <h3>OPERADORES</h3>
-
-              <p>
-                PERFILES, ESPECIALIDADES<br>
-                Y REGISTROS OPERATIVOS.
-              </p>
-
-              <button>
-                VIEW OPERATORS
-              </button>
+                PARAGON // STRIKE DIVISION
 
             </div>
 
-          </article>
 
+            <div class="top-right-info">
 
-          <article class="module">
-
-            <div class="module-number">
-              03
-            </div>
-
-            <div class="module-content">
-
-              <h3>EQUIPAMIENTO</h3>
-
-              <p>
-                SISTEMAS, PROTECCIÓN<br>
-                Y EQUIPO TÁCTICO.
-              </p>
-
-              <button>
-                OPEN EQUIPMENT
-              </button>
+                <span>
+                    PSD-0001
+                </span>
 
             </div>
 
-          </article>
+        </header>
 
 
-          <article class="module">
+        <!-- CENTER -->
 
-            <div class="module-number">
-              04
-            </div>
+        <section class="hero">
 
-            <div class="module-content">
+            <div class="hero-emblem">
 
-              <h3>MISSION CONTROL</h3>
-
-              <p>
-                MISIONES, OPERACIONES<br>
-                Y ESTADO DE ACTIVIDAD.
-              </p>
-
-              <button>
-                MISSION CONTROL
-              </button>
+                <img
+                    src="paragon-emblem-4k.png"
+                    alt="PARAGON Emblem"
+                >
 
             </div>
 
-          </article>
+
+            <div class="hero-line"></div>
 
 
-          <article class="module">
+            <h1>
+                PARAGON
+            </h1>
 
-            <div class="module-number">
-              05
+            <h2>
+                STRIKE DIVISION
+            </h2>
+
+
+            <p class="hero-description">
+                PRIVATE SECURITY & STRATEGIC OPERATIONS
+            </p>
+
+
+            <button
+                id="enterButton"
+                class="enter-button"
+            >
+
+                <span>
+                    ENTER SYSTEM
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- BOTTOM INFORMATION -->
+
+        <footer class="bottom-bar">
+
+            <div>
+                VIRTUD
             </div>
 
-            <div class="module-content">
-
-              <h3>CLASSIFIED FILES</h3>
-
-              <p>
-                ARCHIVOS RESTRINGIDOS.<br>
-                CLEARANCE LEVEL REQUIRED.
-              </p>
-
-              <button>
-                REQUEST ACCESS
-              </button>
-
+            <div>
+                DISCIPLINA
             </div>
 
-          </article>
-
-
-          <article class="module">
-
-            <div class="module-number">
-              06
+            <div>
+                PRECISIÓN
             </div>
 
-            <div class="module-content">
-
-              <h3>IDENTIFICATION</h3>
-
-              <p>
-                SISTEMA DE IDENTIFICACIÓN<br>
-                DE OPERADORES PARAGON.
-              </p>
-
-              <button>
-                OPEN ID SYSTEM
-              </button>
-
+            <div>
+                VICTORIA
             </div>
 
-          </article>
+        </footer>
 
+
+        <!-- SYSTEM PANEL -->
+
+        <div class="system-panel">
+
+            <div class="panel-title">
+                SYSTEM STATUS
+            </div>
+
+            <div class="panel-line"></div>
+
+            <div class="panel-item">
+                <span>NETWORK</span>
+                <span class="online">ONLINE</span>
+            </div>
+
+            <div class="panel-item">
+                <span>DATABASE</span>
+                <span class="online">READY</span>
+            </div>
+
+            <div class="panel-item">
+                <span>SECURITY</span>
+                <span class="online">ACTIVE</span>
+            </div>
 
         </div>
-
-      </section>
-
-
-      <!-- =================================================
-           NETWORK MONITOR
-      ================================================== -->
-
-      <section class="network-section">
-
-        <div class="section-heading">
-          <span>NET // 003</span>
-          <strong>NETWORK MONITOR</strong>
-
-          <span class="live">
-            ● LIVE
-          </span>
-        </div>
-
-
-        <div class="network-monitor">
-
-          <div>
-            <span>PARAGON CORE</span>
-            <strong>ONLINE</strong>
-          </div>
-
-          <div>
-            <span>INTELLIGENCE DATABASE</span>
-            <strong>ONLINE</strong>
-          </div>
-
-          <div>
-            <span>OPERATOR DATABASE</span>
-            <strong>ONLINE</strong>
-          </div>
-
-          <div>
-            <span>SECURITY SYSTEM</span>
-            <strong>ACTIVE</strong>
-          </div>
-
-        </div>
-
-      </section>
 
     </main>
 
 
-    <!-- =================================================
-         FOOTER
-    ================================================== -->
-
-    <footer>
-
-      <div>
-        PARAGON // STRIKE DIVISION
-      </div>
-
-      <div>
-        SECURE TACTICAL NETWORK
-      </div>
-
-      <div>
-        SYSTEM ONLINE
-      </div>
-
-    </footer>
-
-  </section>
-
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
